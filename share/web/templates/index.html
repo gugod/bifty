@@ -1,0 +1,13 @@
+<&|/_elements/wrapper, title => Jifty->config->framework('ApplicationName') &>
+<dl>
+% while (my $post = $posts->next) {
+    <dt><% $post->title %></dt>
+    <dd><% $post->created_on %></dd>
+    <dd><% $post->body %></dd>
+% }
+</dl>
+</&>
+<%init>
+my $posts = Bifty::Model::PostCollection->new();
+$posts->unlimit();
+</%init>

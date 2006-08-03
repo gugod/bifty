@@ -1,10 +1,10 @@
 --- 
 framework: 
   AdminMode: 1
-  ApplicationClass: bifty
-  ApplicationName: bifty
+  ApplicationClass: Bifty
+  ApplicationName: Bifty
   Database: 
-    Database: bifty
+    Database: var/Bifty.db
     Driver: SQLite
     Host: localhost
     Password: ''
