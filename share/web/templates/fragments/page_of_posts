@@ -1,14 +1,13 @@
 % if ($posts->pager->last_page > 1) {
-Page <% $page %> of <% $posts->pager->last_page %>
-<br />
+%   if ($posts->pager->previous_page) {
+      <% Jifty->web->link( label => "« Later Posts", onclick => { args => { page => $posts->pager->previous_page } } ) %>
+%   }
+    Page <% $page %> of <% $posts->pager->last_page %>
+%   if ($posts->pager->next_page) {
+        <% Jifty->web->link( label => "Earlier Posts »", onclick => { args => { page => $posts->pager->next_page } } ) %>
+%    }
 % }
 
-% if ($posts->pager->previous_page) {
-<% Jifty->web->link( label => "Previous Page", onclick => { args => { page => $posts->pager->previous_page } } ) %>
-% }
-% if ($posts->pager->next_page) {
-<% Jifty->web->link( label => "Next Page", onclick => { args => { page => $posts->pager->next_page } } ) %>
-% }
 % while (my $post = $posts->next) {
     <div class="entry">
     <h3 class="entry-header"><% $post->title %></h3>
