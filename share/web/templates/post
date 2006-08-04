@@ -1,5 +1,5 @@
 <%init>
-  my $action = Jifty->web->new_action(class =>'CreatePost');
+  my $action = Jifty->web->new_action(class => 'CreatePost');
 </%init>
 <&|/_elements/wrapper, title => _("Post to your weblog") &>
 

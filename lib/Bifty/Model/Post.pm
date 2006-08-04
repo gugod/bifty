@@ -24,9 +24,8 @@ column body =>
 column tags =>
     type is 'text',
     label is 'Tags',
-    render_as 'text',
-    input_filters are 'Bifty::Filter::Tags'
-    ;
+    render_as 'Textarea',
+    input_filters are 'Bifty::Filter::Tags' ;
 
 column created_on =>
     type is 'timestamp',

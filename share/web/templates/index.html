@@ -19,4 +19,5 @@
 <%init>
 my $posts = Bifty::Model::PostCollection->new();
 $posts->unlimit();
+$posts->order_by( column => 'created_on', order => 'DES' );
 </%init>
