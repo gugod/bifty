@@ -3,6 +3,7 @@ name('Bifty');
 version('0.01');
 requires('Jifty' => '0.60722',
          'Text::Markdown' => 0,
+         'Digest::SHA'    => 0,
         );
 
 WriteAll;
