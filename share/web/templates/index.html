@@ -5,13 +5,15 @@
 % while (my $post = $posts->next) {
 <div class="entry">
     <h3 class="entry-header"><% $post->title %></h3>
-    <div class="entry-body">
-      <% $post->body %>
-      <hr />
-      <span><% $post->tags %></span>
+    <div class="entry-meta">
+      <em><% $post->tags %></em>
       <em class="date"><% $post->created_on %></em>
     </div>
+    <div class="entry-body">
+      <% $post->body %>
+    </div>
 </div>
+<hr />
 % }
 </&>
 <%init>

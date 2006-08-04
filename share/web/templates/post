@@ -1,7 +1,7 @@
 <%init>
   my $action = Jifty->web->new_action(class =>'CreatePost');
 </%init>
-<&|/_elements/wrapper, title => "Post to your weblog" &>
+<&|/_elements/wrapper, title => _("Post to your weblog") &>
 
 <% Jifty->web->form->start() %>
 <% Jifty->web->form->next_page( url => '/') %>
@@ -9,7 +9,7 @@
 <% $action->form_field('created_on') %>
 <% $action->form_field('body') %>
 <% $action->form_field('tags') %>
-<% Jifty->web->form->submit( label => 'Post' ) %>
+<% Jifty->web->form->submit( label => _('Post') ) %>
 <% Jifty->web->form->end() %>
 
 </&>
