@@ -1,11 +1,18 @@
 <&|/_elements/wrapper, title => Jifty->config->framework('ApplicationName') &>
-<dl>
+
+<% Jifty->web->link( url => '/post', label => _('Write a new blog') ) %>
+
 % while (my $post = $posts->next) {
-    <dt><% $post->title %></dt>
-    <dd><% $post->created_on %></dd>
-    <dd><% $post->body %></dd>
+<div class="entry">
+    <h3 class="entry-header"><% $post->title %></h3>
+    <div class="entry-body">
+      <% $post->body %>
+      <hr />
+      <span><% $post->tags %></span>
+      <em class="date"><% $post->created_on %></em>
+    </div>
+</div>
 % }
-</dl>
 </&>
 <%init>
 my $posts = Bifty::Model::PostCollection->new();

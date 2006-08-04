@@ -3,7 +3,9 @@ use warnings;
 
 package Bifty::Model::Post::Schema;
 use Jifty::DBI::Schema;
+use Bifty::Model::TagCollection;
 use Scalar::Defer;
+use DateTime;
 
 # Your column definitions go here.  See L<Jifty::DBI::Schema> for
 # documentation about how to write column definitions.
@@ -19,6 +21,13 @@ column body =>
     render_as 'Textarea',
     default is 'A blog without words';
 
+column tags =>
+    type is 'text',
+    label is 'Tags',
+    render_as 'text',
+    input_filters are 'Bifty::Filter::Tags'
+    ;
+
 column created_on =>
     type is 'timestamp',
     label is 'Created On',
@@ -28,7 +37,6 @@ column created_on =>
 
 package Bifty::Model::Post;
 use base qw/Bifty::Record/;
-use DateTime;
 
 # Your model-specific methods go here.
 
