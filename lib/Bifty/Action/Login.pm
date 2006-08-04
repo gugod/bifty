@@ -9,7 +9,6 @@ Bifty::Action::Login
 
 package Bifty::Action::Login;
 use base qw/Bifty::Action/;
-
 use Jifty::Param::Schema;
 use Jifty::Action schema {
 
@@ -36,8 +35,13 @@ param remember =>
 
 sub take_action {
     my $self = shift;
+    my $email = $self->argument_value('email');
+    unless ( defined $email ) {
+        $self->result->error("No email, canont login");
+        return;
+    }
 
-    my $user = Bifty::CurrentUser->new( email => $self->argument_value('email') );
+    my $user = Bifty::CurrentUser->new( email => $email );
 
     unless ( $user->id
              && $user->password_is($self->argument_value('password'))) {
@@ -45,24 +49,13 @@ sub take_action {
         return;
     }
 
-    # Set up our login message
-    $self->result->message("Welcome back, " . $user->user_object->name . "." );
-
     # Actually do the signin thing.
     Jifty->web->current_user($user);
 
-    $self->report_success if not $self->result->failure;
+    # Set up our login message
+    $self->result->message("Welcome back, " . $user->username() . "." );
+
     return 1;
-}
-
-=head2 report_success
-
-=cut
-
-sub report_success {
-    my $self = shift;
-    # Your success message here
-    $self->result->message('Success');
 }
 
 1;
