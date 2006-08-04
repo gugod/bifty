@@ -2,22 +2,6 @@
 
 <% Jifty->web->link( url => '/post', label => _('Create Post') ) %>
 
-% while (my $post = $posts->next) {
-<div class="entry">
-    <h3 class="entry-header"><% $post->title %></h3>
-    <div class="entry-meta">
-      <em><% $post->tags %></em>
-      <em class="date"><% $post->created_on %></em>
-    </div>
-    <div class="entry-body">
-      <% $post->body %>
-    </div>
-</div>
-<hr />
-% }
+<% Jifty->web->region( name => 'weblogs', path => "/fragments/page_of_posts" )%>
+
 </&>
-<%init>
-my $posts = Bifty::Model::PostCollection->new();
-$posts->unlimit();
-$posts->order_by( column => 'created_on', order => 'DES' );
-</%init>
