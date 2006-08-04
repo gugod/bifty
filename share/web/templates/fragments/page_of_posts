@@ -4,7 +4,7 @@
 %   }
     Page <% $page %> of <% $posts->pager->last_page %>
 %   if ($posts->pager->next_page) {
-        <% Jifty->web->link( label => "Earlier Posts »`", onclick => { args => { page => $posts->pager->next_page } } ) %>
+        <% Jifty->web->link( label => "Earlier Posts »", onclick => { args => { page => $posts->pager->next_page } } ) %>
 %    }
 % }
 
