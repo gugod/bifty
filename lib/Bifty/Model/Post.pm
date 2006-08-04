@@ -3,7 +3,7 @@ use warnings;
 
 package Bifty::Model::Post::Schema;
 use Jifty::DBI::Schema;
-use Bifty::Model::TagCollection;
+use Bifty::Model::User;
 use Scalar::Defer;
 use DateTime;
 
@@ -11,6 +11,9 @@ column title =>
     type is 'text',
     label is 'Title',
     default is 'Untitled Post';
+
+column author =>
+    refers_to Bifty::Model::User;
 
 column body =>
     type is 'text',
@@ -33,6 +36,13 @@ column created_on =>
 
 package Bifty::Model::Post;
 use base qw/Bifty::Record/;
+
+sub before_create {
+    my $self = shift;
+    my $args = shift;
+    $args->{author} = $self->current_user->user_object;
+    return 1;
+}
 
 sub current_user_can {
     my $self = shift;

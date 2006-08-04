@@ -12,8 +12,9 @@
     <div class="entry">
     <h3 class="entry-header"><% $post->title %></h3>
     <div class="entry-meta">
-      <em><% $post->tags %></em>
-      <em class="date"><% $post->created_on %></em>
+      By: <em><% $post->author->username %></em><br/>
+      Tags: <em><% $post->tags %></em><br/>
+      Date: <em class="date"><% $post->created_on %></em>
     </div>
     <div class="entry-body">
       <% markdown( $post->body ) |n%>
