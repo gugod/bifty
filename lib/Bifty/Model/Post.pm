@@ -7,9 +7,6 @@ use Bifty::Model::TagCollection;
 use Scalar::Defer;
 use DateTime;
 
-# Your column definitions go here.  See L<Jifty::DBI::Schema> for
-# documentation about how to write column definitions.
-
 column title =>
     type is 'text',
     label is 'Title',
@@ -37,7 +34,13 @@ column created_on =>
 package Bifty::Model::Post;
 use base qw/Bifty::Record/;
 
-# Your model-specific methods go here.
+sub current_user_can {
+    my $self = shift;
+    my $right = shift;
+    return 1 if $self->current_user->username;
+    return 1 if $right eq 'read';
+    return 0;
+}
 
 1;
 

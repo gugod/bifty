@@ -41,5 +41,11 @@ sub password_is {
     return $self->__value('password') eq $enc;
 }
 
+sub auth_token {
+    my $self = shift;
+    my $username = $self->username();
+    return sha1_hex($username . 'BiftySalt');
+}
+
 1;
 
