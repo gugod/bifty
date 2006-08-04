@@ -4,7 +4,7 @@
 %   }
     Page <% $page %> of <% $posts->pager->last_page %>
 %   if ($posts->pager->next_page) {
-        <% Jifty->web->link( label => "Earlier Posts »", onclick => { args => { page => $posts->pager->next_page } } ) %>
+        <% Jifty->web->link( label => "Earlier Posts »`", onclick => { args => { page => $posts->pager->next_page } } ) %>
 %    }
 % }
 
@@ -16,12 +16,13 @@
       <em class="date"><% $post->created_on %></em>
     </div>
     <div class="entry-body">
-      <% $post->body %>
+      <% markdown( $post->body ) |n%>
     </div>
 </div>
 <hr />
 % }
 <%init>
+use Text::Markdown 'markdown';
 my $posts = Bifty::Model::PostCollection->new();
 $posts->unlimit();
 $posts->set_page_info(current_page => $page, per_page => 3);
