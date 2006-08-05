@@ -1,0 +1,21 @@
+<div class="entry">
+    <h3 class="entry-header"><% $post->title %></h3>
+    <div class="entry-meta">
+      By: <em><% $post->author->username %></em><br/>
+      Tags: <em><% $post->tags || '' %></em><br/>
+      Date: <em class="date"><% $post->created_on %></em><br/>
+% if (  Jifty->web->current_user->username and $post->author->username eq  Jifty->web->current_user->username ) {
+<% Jifty->web->link( label => "Edit", url => "/edit/" . $post->id ) %>
+% }
+
+    </div>
+    <div class="entry-body">
+      <% markdown( $post->body ) |n%>
+    </div>
+</div>
+<%args>
+$post
+</%args>
+<%init>
+use Text::Markdown 'markdown';
+</%init>

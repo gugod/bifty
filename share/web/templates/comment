@@ -1,0 +1,27 @@
+<&|/_elements/wrapper, title => _('Comment %1', $post->title) &>
+
+<& /fragments/post_entry, post => $post &>
+<hr/>
+% while(my $comment = $comments->next ) {
+<div class="comment">
+    By <% $comment->author->username %> on <% $comment->created_on %>
+    <div class="comment-body">
+    <% $comment->body %>
+    </div>
+</div>
+    <hr />
+% }
+
+<h3>Write comment</h3>
+<% Jifty->web->region( name => "comment_editor", path => "/fragments/comment_editor", action => $action, post => $post ) %>
+
+</&>
+<%init>
+my $comments = Bifty::Model::CommentCollection->new();
+$comments->limit( column => 'post', value => $post->id );
+$comments->order_by( column => 'created_on', order => 'DES' );
+</%init>
+<%args>
+$action
+$post
+</%args>

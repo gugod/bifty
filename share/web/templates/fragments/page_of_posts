@@ -9,24 +9,13 @@
 % }
 
 % while (my $post = $posts->next) {
-    <div class="entry">
-    <h3 class="entry-header"><% $post->title %></h3>
-    <div class="entry-meta">
-      By: <em><% $post->author->username %></em><br/>
-      Tags: <em><% $post->tags || '' %></em><br/>
-      Date: <em class="date"><% $post->created_on %></em><br/>
-% if ( $post->author->username eq Jifty->web->current_user->username ) {
-<% Jifty->web->link( label => "Edit", url => "/edit", parameters => { post => $post->id }) %>
+  <& /fragments/post_entry, post => $post &>
+% if ( Jifty->web->current_user->username ) {
+<% Jifty->web->link( label => "Comment", url => "/comment/" . $post->id ) %>
 % }
-    </div>
-    <div class="entry-body">
-      <% markdown( $post->body ) |n%>
-    </div>
-</div>
 <hr />
 % }
 <%init>
-use Text::Markdown 'markdown';
 my $posts = Bifty::Model::PostCollection->new();
 $posts->unlimit();
 $posts->set_page_info(current_page => $page, per_page => 3);

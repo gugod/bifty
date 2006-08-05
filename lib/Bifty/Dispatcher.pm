@@ -1,17 +1,28 @@
 package Bifty::Dispatcher;
 use Jifty::Dispatcher -base;
 
+on qr{^/comment/(.*)}, run {
+    my $args = Jifty->web->request->arguments;
+    my $post = Bifty::Model::Post->new();
+    $post->load_by_cols( id => $1 );
+    set action => Jifty->web->new_action(
+        class   => 'CreateComment'
+    );
+    set post => $post;
+    show('/comment');
+};
+
+on qr'^/edit/(.*)', run {
+    my $post = Bifty::Model::Post->new();
+    $post->load_by_cols( id => $1 );
+    set 'action' =>
+        Jifty->web->new_action(class => 'UpdatePost', record => $post );
+    show('/edit');
+};
+
 before 'post', run {
     set 'action' =>
         Jifty->web->new_action(class => 'CreatePost');
-};
-
-before 'edit', run {
-    my $args = Jifty->web->request->arguments;
-    my $post = Bifty::Model::Post->new();
-    $post->load_by_cols( id => $args->{post} );
-    set 'action' =>
-        Jifty->web->new_action(class => 'UpdatePost', record => $post );
 };
 
 # Sign up for an account

@@ -1,0 +1,12 @@
+<% Jifty->web->form->start() %>
+<% Jifty->web->form->next_page(url => '/comment/' . $post->id) %>
+<% $action->hidden('post', $post->id ) %>
+<% $action->hidden('created_on') %>
+<% $action->form_field('body') %>
+
+<% Jifty->web->form->submit( label => _('Post comment') ) %>
+<% Jifty->web->form->end() %>
+<%args>
+$action
+$post
+</%args>

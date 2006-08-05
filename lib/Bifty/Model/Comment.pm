@@ -13,9 +13,8 @@ column author =>
 
 column body =>
     type is 'text',
-    label is 'Content',
+    label is 'Comment',
     render_as 'Textarea',
-    default is '',
     is mandatory;
 
 column created_on =>
@@ -31,8 +30,14 @@ column post =>
 package Bifty::Model::Comment;
 use base qw/Bifty::Record/;
 
-
 sub since { '0.0.2' }
+
+sub before_create {
+    my $self = shift;
+    my $args = shift;
+    $args->{author} = $self->current_user->user_object;
+    return 1;
+}
 
 sub current_user_can {
     my $self = shift;
