@@ -1,0 +1,7 @@
+<%args>
+$action
+</%args>
+<&|/_elements/wrapper, title => _("Update this entry") &>
+
+<% Jifty->web->region( name => "post_editor", path => "/fragments/post_editor", action => $action ) %>
+</&>
