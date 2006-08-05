@@ -49,6 +49,10 @@ sub current_user_can {
     my $right = shift;
     return 1 if $self->current_user->username;
     return 1 if $right eq 'read';
+    if ($right eq 'delete'
+        and $self->current_user->user_object->id eq $self->__value('author')) {
+        return 1;
+    }
     return 0;
 }
 

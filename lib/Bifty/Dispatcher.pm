@@ -1,6 +1,19 @@
 package Bifty::Dispatcher;
 use Jifty::Dispatcher -base;
 
+before 'post', run {
+    set 'action' =>
+        Jifty->web->new_action(class => 'CreatePost');
+};
+
+before 'edit', run {
+    my $args = Jifty->web->request->arguments;
+    my $post = Bifty::Model::Post->new();
+    $post->load_by_cols( id => $args->{post} );
+    set 'action' =>
+        Jifty->web->new_action(class => 'UpdatePost', record => $post );
+};
+
 # Sign up for an account
 on 'signup', run {
     redirect('/') if ( Jifty->web->current_user->id );
