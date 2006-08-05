@@ -2,5 +2,5 @@
 $action
 </%args>
 <&|/_elements/wrapper, title => _("Post to your weblog") &>
-<% Jifty->web->region( name => "post_editor", path => "/fragments/post_editor", action => $action ) %>
+<& "/fragments/post_editor", action => $action  &>
 </&>

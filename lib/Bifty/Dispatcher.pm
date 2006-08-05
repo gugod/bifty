@@ -2,7 +2,6 @@ package Bifty::Dispatcher;
 use Jifty::Dispatcher -base;
 
 on qr{^/comment/(.*)}, run {
-    my $args = Jifty->web->request->arguments;
     my $post = Bifty::Model::Post->new();
     $post->load_by_cols( id => $1 );
     set action => Jifty->web->new_action(

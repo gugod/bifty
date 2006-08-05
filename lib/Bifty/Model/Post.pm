@@ -11,19 +11,16 @@ use DateTime;
 column title =>
     type is 'text',
     label is 'Title',
-    default is 'Untitled Post',
-    is mandatory;
+    default is 'Untitled Post';
 
 column author =>
-    refers_to Bifty::Model::User,
-    is mandatory;
+    refers_to Bifty::Model::User;
 
 column body =>
     type is 'text',
     label is 'Content',
     render_as 'Textarea',
-    default is 'A blog without words',
-    is mandatory;
+    default is 'A blog without words';
 
 column tags =>
     type is 'text',
@@ -36,8 +33,7 @@ column created_on =>
     label is 'Created On',
     default is defer { DateTime->now },
     filters are 'Jifty::DBI::Filter::DateTime',
-    render_as 'text',
-    is mandatory;
+    render_as 'text';
 
 column comments =>
     refers_to Bifty::Model::CommentCollection;
@@ -55,12 +51,14 @@ sub before_create {
 sub current_user_can {
     my $self = shift;
     my $right = shift;
-    return 1 if $self->current_user->username;
-    if ( $right eq 'read' || $right eq 'create' ) {
-        return 1;
-    } else { # $right is 'delete' or 'update'
-        return 1
-            if ( $self->current_user->user_object->id eq $self->__value('author') )
+    return 1 if $right eq 'read';
+    if ( $self->current_user->username ) {
+        if ( $right eq 'create' ) {
+            return 1;
+        } else { # $right is 'delete' or 'update'
+            return 1
+                if ( $self->current_user->user_object->id eq $self->__value('author') );
+        }
     }
     return 0;
 }
