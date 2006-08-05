@@ -1,7 +1,6 @@
 <body>
   <div id="headers">
-    <%Jifty->web->link( url => "/", label => _(Jifty->config->framework('ApplicationName')))%>
-    <h1 class="title"><% _($title) %></h1>
+    <h1 class="title"><%Jifty->web->link( url => "/", label => _(Jifty->config->framework('ApplicationName')))%> :: <% _($title) %></h1>
   </div>
   <& sidebar &>
   <div id="content">
