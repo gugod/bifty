@@ -1,3 +1,4 @@
+% if (Jifty->web->current_user->username) {
 <% Jifty->web->form->start() %>
 <% Jifty->web->form->next_page(url => '/comment/' . $post->id) %>
 <% $action->hidden('post', $post->id ) %>
@@ -6,6 +7,9 @@
 
 <% Jifty->web->form->submit( label => _('Post comment') ) %>
 <% Jifty->web->form->end() %>
+% } else {
+Please <% Jifty->web->tangent(label => "login", url => "/login") %> to write comment.
+% }
 <%args>
 $action
 $post

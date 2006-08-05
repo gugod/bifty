@@ -9,10 +9,8 @@
 % }
 
 % while (my $post = $posts->next) {
-  <& /fragments/post_entry, post => $post &>
-% if ( Jifty->web->current_user->username ) {
-<% Jifty->web->link( label => "Comment", url => "/comment/" . $post->id ) %>
-% }
+<& /fragments/post_entry, post => $post &>
+<% Jifty->web->link( label => $post->comments->count . " Comments", url => "/comment/" . $post->id ) %>
 <hr />
 % }
 <%init>

@@ -42,9 +42,9 @@ sub before_create {
 sub current_user_can {
     my $self = shift;
     my $right = shift;
-    return 1 if $self->current_user->username;
-    if ( $right eq 'read' || $right eq 'create' ) {
-        return 1;
+    return 1 if ($right eq 'read');
+    if ( $self->current_user->username ) {
+        return 1 if $right eq 'create';
     } else { # $right is 'delete' or 'update'
         return 1
             if ( $self->current_user->user_object->id eq $self->__value('author') )
