@@ -4,7 +4,7 @@ use Jifty::Dispatcher -base;
 on qr{^/view/(list|full)}, run {
     set type => $1;
     show('/');
-}
+};
 
 on qr{^/comment/(.*)}, run {
     my $post = Bifty::Model::Post->new();
