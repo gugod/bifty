@@ -1,6 +1,11 @@
 package Bifty::Dispatcher;
 use Jifty::Dispatcher -base;
 
+on qr{^/view/(list|full)}, run {
+    set type => $1;
+    show('/');
+}
+
 on qr{^/comment/(.*)}, run {
     my $post = Bifty::Model::Post->new();
     $post->load_by_cols( id => $1 );

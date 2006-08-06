@@ -1,7 +1,8 @@
 <%init>
 my $top = Jifty->web->navigation;
-$top->child(Home => url => "/", sort_order => 1);
-$top->child(Post => url => "/post", sort_order => 2);
+$top->child(List => url => "/view/list", sort_order => 1);
+$top->child(Full => url => "/view/full", sort_order => 2);
+$top->child(Post => url => "/post", sort_order => 3);
 
 if (Jifty->config->framework('AdminMode') ) {
     $top->child(Administration       => url => "/__jifty/admin/", sort_order => 998);
