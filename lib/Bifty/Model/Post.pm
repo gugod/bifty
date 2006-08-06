@@ -36,7 +36,7 @@ column created_on =>
     render_as 'text';
 
 column comments =>
-    refers_to Bifty::Model::CommentCollection;
+    refers_to Bifty::Model::CommentCollection by 'post';
 
 package Bifty::Model::Post;
 use base qw/Bifty::Record/;

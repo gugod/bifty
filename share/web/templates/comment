@@ -13,12 +13,12 @@
 % }
 
 <h3>Write comment</h3>
+
 <% Jifty->web->region( name => "comment_editor", path => "/fragments/comment_editor", action => $action, post => $post ) %>
 
 </&>
 <%init>
-my $comments = Bifty::Model::CommentCollection->new();
-$comments->limit( column => 'post', value => $post->id );
+my $comments = $post->comments;
 $comments->order_by( column => 'created_on', order => 'DES' );
 </%init>
 <%args>

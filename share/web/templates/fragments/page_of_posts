@@ -1,3 +1,4 @@
+
 % if ($posts->pager->last_page > 1) {
 %   if ($posts->pager->previous_page) {
       <% Jifty->web->link( label => "« Later Posts", onclick => { args => { page => $posts->pager->previous_page } } ) %>
@@ -10,9 +11,10 @@
 
 % while (my $post = $posts->next) {
 <& /fragments/post_entry, post => $post &>
-<% Jifty->web->link( label => $post->comments->count . " Comments", url => "/comment/" . $post->id ) %>
+<% Jifty->web->link( label => _('%1 comments', $post->comments->count ) ,  url => "/comment/" . $post->id ) %>
 <hr />
 % }
+
 <%init>
 my $posts = Bifty::Model::PostCollection->new();
 $posts->unlimit();
