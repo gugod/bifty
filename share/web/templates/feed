@@ -1,0 +1,36 @@
+<%args>
+$type => 'atom'
+</%args>
+<%init>
+use XML::Feed;
+
+my %map = (
+   atom => 'Atom',
+   rss  => 'RSS'
+);
+$type = $map{lc($type)};
+
+my $posts = Bifty::Model::PostCollection->new();
+$posts->unlimit();
+$posts->order_by( column => 'created_on', order => 'DES' );
+
+my $feed = XML::Feed->new( $type );
+$feed->title( Jifty->config->framework('ApplicationName') . " Feed" );
+$feed->link( Jifty->web->url );
+$feed->description( $feed->title );
+
+while( my $post = $posts->next ) {
+    my $feed_entry = XML::Feed::Entry->new($type);
+    $feed_entry->title($post->title);
+    $feed_entry->author($post->author->username);
+    $feed_entry->link( Jifty->web->url . "/comment/" . $post->id );
+    $feed_entry->issued( $post->created_on );
+    $feed_entry->summary( $post->body );
+    $feed->add_entry($feed_entry);
+}
+Jifty->handler->apache->header_out('Content-Type' => "application/" . lc($type) . "+xml; charset=UTF-8");
+</%init>
+<%args>
+$page => 1
+</%args>
+<% $feed->as_xml |n%>

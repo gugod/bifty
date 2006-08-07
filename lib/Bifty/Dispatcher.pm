@@ -1,6 +1,11 @@
 package Bifty::Dispatcher;
 use Jifty::Dispatcher -base;
 
+on qr{^/feed/(atom|rss|rss2)}, run {
+    set type => $1;
+    show('/feed');
+};
+
 on qr{^/view/(list|full)}, run {
     set type => $1;
     show('/');
