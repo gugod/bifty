@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  <meta name="robots" content="all" />
+
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="/feed/atom" />
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed/rss" />
+  
+  <title><% _($title) %></title>
+  
+  <% Jifty->web->include_css %>
+  <% Jifty->web->include_javascript %> 
+</head>
+<%args>
+$title => ""
+</%args>
+<%init>
+$r->content_type('text/html; charset=utf-8');
+</%init>
