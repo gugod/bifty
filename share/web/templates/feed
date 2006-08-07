@@ -2,6 +2,8 @@
 $type => 'atom'
 </%args>
 <%init>
+use utf8;
+use Encode;
 use XML::Feed;
 
 my %map = (
@@ -14,7 +16,8 @@ my $posts = Bifty::Model::PostCollection->new();
 $posts->unlimit();
 $posts->order_by( column => 'created_on', order => 'DES' );
 
-my $feed = XML::Feed->new( $type );
+my $feed = XML::Feed->new( $type , encoding=>'utf-8');
+
 $feed->title( Jifty->config->framework('ApplicationName') . " Feed" );
 $feed->link( Jifty->web->url );
 $feed->description( $feed->title );
@@ -28,9 +31,15 @@ while( my $post = $posts->next ) {
     $feed_entry->summary( $post->body );
     $feed->add_entry($feed_entry);
 }
-Jifty->handler->apache->header_out('Content-Type' => "application/" . lc($type) . "+xml; charset=UTF-8");
+
+# Without this, Atom feed becomes messy code.
+my $xml = $feed->as_xml;
+Encode::_utf8_on( $xml );
+
+Jifty->handler->apache->header_out('Content-Type' => "application/" . lc($type) . "+xml; charset=utf-8");
+
 </%init>
 <%args>
 $page => 1
 </%args>
-<% $feed->as_xml |n%>
+<% $xml |n%>
