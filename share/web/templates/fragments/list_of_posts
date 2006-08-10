@@ -16,7 +16,7 @@
     onmouseover="this.style.background='#ffc'"
     onmouseout="this.style.background='#fff'"
     onclick="location.href='<% "/comment/" . $post->id %>'">
-<td><% $post->title %></td>
+<td><% $post->title %> <span style="padding-left:11px;font-size:9pt;color:#090;"><% $post->tags ||'' %></span></td>
 <td><% $post->author->username %></td>
 <td><% _('%1 comments', $post->comments->count ) %></td>
 </tr>
@@ -36,7 +36,7 @@
     onmouseover="this.style.background='#ffc'"
     onmouseout="this.style.background='#fff'"
     onclick="location.href='<% "/comment/" . $post->id %>'">
-<td><% $post->title %></td>
+<td><% $post->title %> <span style="padding-left:11px;font-size:9pt;color:#090;"><% $post->tags ||'' %></span></td>
 <td><% $post->author->username %></td>
 <td><% _('%1 comments', $post->comments->count ) %></td>
 </tr>
