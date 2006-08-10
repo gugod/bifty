@@ -10,6 +10,27 @@
 % }
 
 <table style="border:1px; border-collapse:collapse; width:100%;">
+%# Special treatment for the first post.
+% my $post = $posts->next;
+<tr style="cursor:pointer;"
+    onmouseover="this.style.background='#ffc'"
+    onmouseout="this.style.background='#fff'"
+    onclick="location.href='<% "/comment/" . $post->id %>'">
+<td><% $post->title %></td>
+<td><% $post->author->username %></td>
+<td><% _('%1 comments', $post->comments->count ) %></td>
+</tr>
+<tr style="cursor:pointer;"
+    onmouseover="this.style.background='#ffc'"
+    onmouseout="this.style.background='#fff'"
+    onclick="location.href='<% "/comment/" . $post->id %>'">
+<td colspan="3">
+   <div style="padding:12px; margin:5px auto; width:80%; border: 2px solid black;">
+      <% markdown( $post->body ) |n%>
+   </div>
+</td>
+</tr>
+
 % while (my $post = $posts->next) {
 <tr style="cursor:pointer;"
     onmouseover="this.style.background='#ffc'"
@@ -23,12 +44,15 @@
 </table>
 
 <%init>
+use Text::Markdown qw/markdown/;
+
 my $posts = Bifty::Model::PostCollection->new();
 $posts->unlimit();
 $posts->set_page_info(current_page => $page, per_page => 25);
 $posts->order_by( column => 'created_on', order => 'DES' );
 
 $m->out("No items found.") if ($posts->pager->total_entries == 0);
+
 </%init>
 <%args>
 $page => 1
