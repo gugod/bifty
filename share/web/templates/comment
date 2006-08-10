@@ -1,4 +1,4 @@
-<&|/_elements/wrapper, title => _('Comment %1', $post->title) &>
+<&|/_elements/wrapper, title => _('Comment %1', $post->title), head_extra => $head_extra &>
 
 <& /fragments/post_entry, post => $post &>
 <hr/>
@@ -20,6 +20,13 @@
 <%init>
 my $comments = $post->comments;
 $comments->order_by( column => 'created_on', order => 'DES' );
+
+my $post_id = $post->id;
+my $head_extra = qq{
+  <link rel="alternate" type="application/atom+xml" title="Blog Post Comment Atom Feed" href="/feed/comment/$post_id/atom" />
+  <link rel="alternate" type="application/rss+xml" title="Blog Post Comment RSS Feed" href="/feed/comment/$post_id/rss" />
+};
+
 </%init>
 <%args>
 $action

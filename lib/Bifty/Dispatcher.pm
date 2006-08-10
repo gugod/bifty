@@ -1,8 +1,26 @@
 package Bifty::Dispatcher;
 use Jifty::Dispatcher -base;
 
-on qr{^/feed/(atom|rss|rss2)}, run {
+# Post feed: /feed/atom , /feed/rss/
+on qr{^/feed/(atom|rss)}, run {
     set type => $1;
+    show('/feed');
+};
+
+# All Comment feed: /feed/comment/atom
+on qr{^/feed/comment/(atom|rss)}, run {
+    set type => $1;
+    set model => 'comment';
+    show('/feed');
+};
+
+# Single post comment feed: /feed/comment/10/atom
+on qr{^/feed/comment/(\d+)/(atom|rss)}, run {
+    my $post = Bifty::Model::Post->new();
+    $post->load_by_cols( id => $1 );
+    set post => $post;
+    set type => $2;
+    set model => 'comment';
     show('/feed');
 };
 
@@ -11,7 +29,7 @@ on qr{^/view/(list|full)}, run {
     show('/');
 };
 
-on qr{^/comment/(.*)}, run {
+on qr{^/comment/(\d+)}, run {
     my $post = Bifty::Model::Post->new();
     $post->load_by_cols( id => $1 );
     set action => Jifty->web->new_action(
@@ -21,7 +39,7 @@ on qr{^/comment/(.*)}, run {
     show('/comment');
 };
 
-on qr'^/edit/(.*)', run {
+on qr'^/edit/(\d+)', run {
     my $post = Bifty::Model::Post->new();
     $post->load_by_cols( id => $1 );
     set 'action' =>
@@ -34,7 +52,6 @@ before 'post', run {
         Jifty->web->new_action(class => 'CreatePost');
 };
 
-# Sign up for an account
 on 'signup', run {
     redirect('/') if ( Jifty->web->current_user->id );
     set 'action' =>
@@ -47,7 +64,6 @@ on 'signup', run {
 
 };
 
-# Login
 on 'login', run {
     set 'action' =>
         Jifty->web->new_action( class => 'Login', moniker => 'loginbox' );
@@ -56,7 +72,6 @@ on 'login', run {
         request => Jifty::Request->new( path => "/" ) );
 };
 
-# Log out
 before 'logout', run {
     Jifty->web->request->add_action(
         moniker => 'logout',

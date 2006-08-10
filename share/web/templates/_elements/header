@@ -4,9 +4,16 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
   <meta name="robots" content="all" />
 
-  <link rel="alternate" type="application/atom+xml" title="Atom" href="/feed/atom" />
-  <link rel="alternate" type="application/rss+xml" title="RSS" href="/feed/rss" />
-  
+  <link rel="alternate" type="application/atom+xml" title="Blog Post Atom Feed" href="/feed/atom" />
+  <link rel="alternate" type="application/rss+xml" title="Blog Post RSS Feed" href="/feed/rss" />
+
+  <link rel="alternate" type="application/atom+xml" title="All Comment Atom Feed" href="/feed/comment/atom" />
+  <link rel="alternate" type="application/rss+xml" title="All Comment RSS Feed" href="/feed/comment/rss" />
+
+% if (defined $head_extra) {
+<% $head_extra |n%>
+% }
+
   <title><% _($title) %></title>
   
   <% Jifty->web->include_css %>
@@ -14,6 +21,7 @@
 </head>
 <%args>
 $title => ""
+$head_extra => undef
 </%args>
 <%init>
 $r->content_type('text/html; charset=utf-8');
