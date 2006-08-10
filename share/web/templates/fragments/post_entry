@@ -10,12 +10,14 @@
 
     </div>
     <div class="entry-body">
-      <% markdown( $post->body ) |n%>
+      <% markdown( $emoticon->filter($post->body) ) |n%>
     </div>
 </div>
 <%args>
 $post
 </%args>
-<%init>
+<%init>;
+use Text::Emoticon::MSN;
 use Text::Markdown 'markdown';
+my $emoticon = Text::Emoticon::MSN->new();
 </%init>

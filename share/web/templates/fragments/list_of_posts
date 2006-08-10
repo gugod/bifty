@@ -26,7 +26,7 @@
     onclick="location.href='<% "/comment/" . $post->id %>'">
 <td colspan="3">
    <div style="padding:12px; margin:5px auto; width:80%; border: 2px solid black;">
-      <% markdown( $post->body ) |n%>
+      <% markdown( $emoticon->filter($post->body) ) |n%>
    </div>
 </td>
 </tr>
@@ -45,6 +45,8 @@
 
 <%init>
 use Text::Markdown qw/markdown/;
+use Text::Emoticon::MSN;
+my $emoticon = Text::Emoticon::MSN->new();
 
 my $posts = Bifty::Model::PostCollection->new();
 $posts->unlimit();
