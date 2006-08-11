@@ -6,7 +6,7 @@
 <div class="comment">
     By <% $comment->author->username %> on <% $comment->created_on %>
     <div class="comment-body">
-    <% $comment->body %>
+    <% markdown( $emoticon->filter( $comment->body )) |n%>
     </div>
 </div>
     <hr />
@@ -17,7 +17,11 @@
 <% Jifty->web->region( name => "comment_editor", path => "/fragments/comment_editor", action => $action, post => $post ) %>
 
 </&>
-<%init>
+<%init>;
+use Text::Markdown 'markdown';
+use Text::Emoticon::MSN;
+my $emoticon = Text::Emoticon::MSN->new();
+
 my $comments = $post->comments;
 $comments->order_by( column => 'created_on', order => 'DES' );
 
