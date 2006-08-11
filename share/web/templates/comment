@@ -1,4 +1,4 @@
-<&|/_elements/wrapper, title => _('Comment %1', $post->title), head_extra => $head_extra &>
+<&|/_elements/wrapper, title => $post->title, head_extra => $head_extra &>
 
 <& /fragments/post_entry, post => $post &>
 <hr/>
