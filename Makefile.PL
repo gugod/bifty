@@ -6,6 +6,7 @@ requires('Jifty' => '0.60722',
          'Digest::SHA'    => 0,
          'XML::Feed'      => 0,
 	 'Text::Emoticon::MSN' => 0.04,
+         'List::MoreUtils' => 0.22,
         );
 
 WriteAll;
