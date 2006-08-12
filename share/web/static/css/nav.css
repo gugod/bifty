@@ -33,6 +33,7 @@ ul.submenu {
         position: absolute;
         top: 22px;
         left:0;
+        display:none;
 }
 ul.submenu li {
         display:inline;
@@ -42,6 +43,10 @@ ul.submenu li {
 ul.submenu li+li {
         border-left:1px solid #ccc;
 }
+div#navigation ul.menu li:hover ul.submenu {
+    display:block;
+}
+
 div#navigation a:link,
 div#navigation a:visited,
 div#navigation a:hover {
