@@ -4,7 +4,7 @@
 <% Jifty->web->link(url => "/logout", label => "Logout" ) %>
 % }  else {
 <%_(q{You're not currently signed in.})%>
-<% Jifty->web->link( label => q{Sign in}, url => '/login' ) %>.  
+<% Jifty->web->tangent( label => q{Sign in}, url => '/login' ) %>.  
 % }
 </div>
 <div id="navigation">
