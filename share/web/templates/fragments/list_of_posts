@@ -11,7 +11,7 @@
 
 <table style="border:1px; border-collapse:collapse; width:100%;">
 %# Special treatment for the first post.
-% my $post = $posts->next;
+% if( my $post = $posts->next ) {
 <tr style="cursor:pointer;"
     onmouseover="this.style.background='#ffc'"
     onmouseout="this.style.background='#fff'"
@@ -30,7 +30,7 @@
    </div>
 </td>
 </tr>
-
+% }
 % while (my $post = $posts->next) {
 <tr style="cursor:pointer;"
     onmouseover="this.style.background='#ffc'"
