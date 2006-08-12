@@ -2,7 +2,10 @@
 my $top = Jifty->web->navigation;
 
 $top->child(View => url => "/view", sort_order => 1);
-$top->child(Post => url => "/post", sort_order => 2);
+
+if (Jifty->web->current_user->username) {
+    $top->child(Post => url => "/post", sort_order => 2);
+}
 
 my $view = $top->child('View');
 $view->child(List => url => "/view/list", sort_order => 1);
