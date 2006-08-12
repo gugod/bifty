@@ -1,6 +1,10 @@
 package Bifty::Dispatcher;
 use Jifty::Dispatcher -base;
 
+on qr{^/$}, run {
+    redirect("/view");
+};
+
 # Post feed: /feed/atom , /feed/rss/
 on qr{^/feed/(atom|rss)}, run {
     set type => $1;
@@ -26,7 +30,7 @@ on qr{^/feed/comment/(\d+)/(atom|rss)}, run {
 
 on qr{^/view/(list|full)}, run {
     set type => $1;
-    show('/');
+    show('/view');
 };
 
 on qr{^/comment/(\d+)}, run {

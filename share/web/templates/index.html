@@ -1,9 +1,1 @@
-<%args>
-$type => 'list'
-</%args>
-<%init>
-my $t = ( $type eq 'list' ) ? 'list_of_posts' : 'page_of_posts';
-</%init>
-<&|/_elements/wrapper, title => Jifty->config->framework('ApplicationName') &>
-<% Jifty->web->region( name => 'weblogs', path => "/fragments/$t" )%>
-</&>
+%# This is not used currently. Redirect to /view by default.
