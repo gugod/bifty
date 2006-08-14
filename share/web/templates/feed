@@ -1,6 +1,6 @@
 <%args>
 $type => 'atom'
-$model => 'posts'
+$model => 'post'
 $post => undef
 </%args>
 <%init>
@@ -20,7 +20,7 @@ my $co = ($model eq 'post') ?
     $post->comments():
     Bifty::Model::CommentCollection->new();
 
-$co->unlimit();
+$co->unlimit() unless defined $post;
 $co->order_by( column => 'created_on', order => 'DES' );
 
 my $feed = XML::Feed->new( $type , encoding=>'utf-8');
