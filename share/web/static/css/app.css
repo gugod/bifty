@@ -8,3 +8,16 @@
     top:0px;
     right:0px;
 }
+
+#navigation {
+    margin: 5px 0 5px auto;
+}
+
+#navigation .menu {
+    background:#fff;
+}
+
+#navigation .menu li {
+    margin: 0 5px 0 0;
+}
+
