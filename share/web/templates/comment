@@ -2,6 +2,7 @@
 
 <& /fragments/post_entry, post => $post &>
 
+<& /_elements/google_adsense &>
 <& _elements/adsense_referral &>
 
 <hr/>
