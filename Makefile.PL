@@ -9,4 +9,6 @@ requires('Jifty' => '0.60722',
          'List::MoreUtils' => 0.22,
         );
 
+auto_install;
+
 WriteAll;
