@@ -16,6 +16,11 @@
   </div>
   <div id="jifty-wait-message" style="display: none"><%_('Loading...')%></div>
 % Jifty::Mason::Halo->render_component_tree() if (Jifty->config->framework('DevelMode') );
+
+<div id="prchecker-img">
+<img src="http://www.prchecker.info/PR3_img.gif">
+</div>
+
 </body>
 </html>
 % Jifty->handler->stash->{'in_body'} = 0;
