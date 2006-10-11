@@ -1,6 +1,9 @@
 <&|/_elements/wrapper, title => $post->title, head_extra => $head_extra &>
 
 <& /fragments/post_entry, post => $post &>
+
+<& _elements/adsense_referral &>
+
 <hr/>
 % while(my $comment = $comments->next ) {
 <div class="comment">

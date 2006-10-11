@@ -21,3 +21,20 @@
     margin: 0 5px 0 0;
 }
 
+google-adsense-referral
+{
+  font-size:9pt;
+  padding:11px;
+}
+
+.google-adsense-referral a
+{
+  text-decoration:none;
+  color:#f99;
+}
+.google-adsense-referral a:hover
+{
+  text-decoration:underline;
+  color:#fBB;
+}
+
