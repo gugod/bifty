@@ -1,5 +1,6 @@
 --- 
 framework: 
+  SiteConfig: etc/site_config.yaml
   AdminMode: 0
   ApplicationClass: Bifty
   ApplicationName: Bifty
