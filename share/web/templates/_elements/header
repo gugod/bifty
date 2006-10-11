@@ -18,6 +18,8 @@
   
   <% Jifty->web->include_css %>
   <% Jifty->web->include_javascript %> 
+
+  <& /_elements/google_analytics &>
 </head>
 <%args>
 $title => ""

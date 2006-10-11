@@ -20,13 +20,12 @@
 <td><% $post->author->username %></td>
 <td><% _('%1 comments', $post->comments->count ) %></td>
 </tr>
-<tr style="cursor:pointer;"
-    onmouseover="this.style.background='#ffc'"
-    onmouseout="this.style.background='#fff'">
+<tr>
 <td colspan="3">
    <div style="padding:12px; margin:5px auto; width:80%; border: 2px solid black;">
       <% markdown( $emoticon->filter($post->body) ) |n%>
 
+      <& /_elements/google_adsense &>
       <& /_elements/adsense_referral &>
    </div>
 </td>
