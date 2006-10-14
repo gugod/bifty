@@ -2,8 +2,8 @@
 <% Jifty->web->form->next_page( url => '/') %>
 <% $action->form_field('title') %>
 <% $action->form_field('created_on') %>
-<% $action->form_field('body') %>
 <% $action->form_field('tags') %>
+<% $action->form_field('body') %>
 <% Jifty->web->form->submit( label => _('Save') ) %>
 <% Jifty->web->form->end() %>
 
