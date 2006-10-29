@@ -1,0 +1,16 @@
+<&|/_elements/wrapper, title => _("Tags") &>
+
+<% $cloud->html_and_css(50) |n%>
+
+</&>
+<%init>
+use HTML::TagCloud;
+my $cloud = HTML::TagCloud->new;
+for (keys %$tags) {
+    $cloud->add( $_, "/tags/$_", $tags->{$_} );
+}
+
+</%init>
+<%args>
+$tags => {}
+</%args>

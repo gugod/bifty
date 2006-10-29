@@ -28,8 +28,15 @@ on qr{^/feed/comment/(\d+)/(atom|rss)}, run {
     show('/feed');
 };
 
-on qr{^/view/(list|full)}, run {
-    set type => $1;
+on qr{^/view/(.*)}, run {
+    my $author;
+    my $type = $1;
+    if ( $type !~ '^(list|full)$' ) {
+        $author = $type;
+        $type = 'list';
+    }
+    set type => $type;
+    set author => $author;
     show('/view');
 };
 
@@ -50,6 +57,18 @@ on qr'^/edit/(\d+)', run {
         Jifty->web->new_action(class => 'UpdatePost', record => $post );
     show('/edit');
 };
+
+on qr'^/tag', run {
+    my $tags = { };
+    my $posts = Bifty::Model::PostCollection->new();
+    $posts->unlimit();
+    while ( my $post = $posts->next ) {
+        for( split( /\s+/, $post->tags() ) ) {
+            $tags->{$_}++;
+        }
+    }
+    set 'tags' => $tags;
+}
 
 before 'post', run {
     set 'action' =>
