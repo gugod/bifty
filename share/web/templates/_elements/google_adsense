@@ -1,3 +1,4 @@
+% unless ( Jifty->config->framework('DevelMode') ) {
 <div class="google-adsense">
 <script type="text/javascript"><!--
 google_ad_client = "pub-7018484007527096";
@@ -15,3 +16,5 @@ google_color_text = "000000";
 <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
 </div>
+
+% }
