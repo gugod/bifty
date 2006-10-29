@@ -56,7 +56,13 @@ if (defined $author) {
     my $a = Bifty::Model::User->new();
     $a->load_by_cols( name => $author );
     $posts->limit( column => 'author', value => $a->id );
-} else {
+}
+elsif ( defined $tag ) {
+    $posts->limit( column => 'tags', value => "\%$tag\%",
+                   case_sensitive => 0,
+                   operator => 'LIKE' );
+}
+else {
     $posts->unlimit();
 }
 
@@ -67,6 +73,7 @@ $m->out("No items found.") if ($posts->pager->total_entries == 0);
 
 </%init>
 <%args>
-$page => 1
+$page   => 1
 $author => undef
+$tag    => undef
 </%args>

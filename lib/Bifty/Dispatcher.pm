@@ -58,16 +58,22 @@ on qr'^/edit/(\d+)', run {
     show('/edit');
 };
 
-on qr'^/tags', run {
-    my $tags = { };
-    my $posts = Bifty::Model::PostCollection->new();
-    $posts->unlimit();
-    while ( my $post = $posts->next ) {
-        for( split( /\s+/, $post->tags() ) ) {
-            $tags->{$_}++;
+on qr'^/tags(/(.*))?$?', run {
+    if ( $2 ) {
+        set tag  => $2;
+        set type => 'list';
+        show('/view');
+    } else {
+        my $tags = { };
+        my $posts = Bifty::Model::PostCollection->new();
+        $posts->unlimit();
+        while ( my $post = $posts->next ) {
+            for( split( /\s+/, $post->tags() ) ) {
+                $tags->{$_}++;
+            }
         }
+        set 'tags' => $tags;
     }
-    set 'tags' => $tags;
 };
 
 on qr'^/authors', run {
