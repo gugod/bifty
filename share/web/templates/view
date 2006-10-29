@@ -1,5 +1,6 @@
 <%args>
 $type => 'list'
+$author => undef
 </%args>
 <%init>
 my $t = ( $type eq 'list' ) ? 'list_of_posts' : 'page_of_posts';

@@ -1,16 +1,18 @@
 <%init>
 my $top = Jifty->web->navigation;
 
-$top->child(View => url => "/view", sort_order => 1);
+$top->child(View => url => "/view");
 
 if (Jifty->web->current_user->username) {
-    $top->child(Post => url => "/post", sort_order => 2);
+    $top->child(Post => url => "/post");
 }
 
-my $view = $top->child('View');
-$view->child(List => url => "/view/list", sort_order => 1);
-$view->child(Full => url => "/view/full", sort_order => 2);
+$top->child(Tags => url => "/tags");
+$top->child(Authors => url => "/authors");
 
+my $view = $top->child('View');
+$view->child(List => url => "/view/list");
+$view->child(Full => url => "/view/full");
 
 if (Jifty->config->framework('AdminMode') ) {
     $top->child(Administration       => url => "/__jifty/admin/", sort_order => 998);

@@ -58,7 +58,7 @@ on qr'^/edit/(\d+)', run {
     show('/edit');
 };
 
-on qr'^/tag', run {
+on qr'^/tags', run {
     my $tags = { };
     my $posts = Bifty::Model::PostCollection->new();
     $posts->unlimit();
@@ -68,7 +68,18 @@ on qr'^/tag', run {
         }
     }
     set 'tags' => $tags;
-}
+};
+
+on qr'^/authors', run {
+     my $authors = { };
+     my $it = Bifty::Model::PostCollection->new();
+     $it->unlimit();
+     while ( my $i = $it->next ) {
+         $authors->{ $i->author->username }++;
+     }
+
+     set 'authors' => $authors;
+};
 
 before 'post', run {
     set 'action' =>
