@@ -1,0 +1,6 @@
+% unless ( Jifty->config->framework('DevelMode') )  {
+<div id="prchecker-img">
+<img src="http://www.prchecker.info/PR3_img.gif" alt="pagerank checker" />
+</div>
+%
+% }
