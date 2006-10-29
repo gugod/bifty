@@ -1,0 +1,16 @@
+<&|/_elements/wrapper, title => _("Authors") &>
+
+<% $cloud->html_and_css(50) |n%>
+
+</&>
+<%init>
+use HTML::TagCloud;
+my $cloud = HTML::TagCloud->new;
+for (keys %$authors) {
+    $cloud->add($_, "/view/$_", $authors->{$_} );
+}
+
+</%init>
+<%args>
+$authors => {}
+</%args>
