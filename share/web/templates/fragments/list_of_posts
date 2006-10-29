@@ -16,7 +16,7 @@
     onmouseover="this.style.background='#ffc'"
     onmouseout="this.style.background='#fff'"
     onclick="location.href='<% "/comment/" . $post->id %>'">
-<td><% $post->title %> <span style="padding-left:11px;font-size:9pt;color:#090;"><% $post->tags ||'' %></span></td>
+<td><a href="/posts/<% $post->id %>"><% $post->title %></a><span style="padding-left:11px;font-size:9pt;color:#090;"><% $post->tags ||'' %></span></td>
 
 <td><% defined $author ? '': $post->author->username %></td>
 
@@ -37,8 +37,8 @@
 <tr style="cursor:pointer;"
     onmouseover="this.style.background='#ffc'"
     onmouseout="this.style.background='#fff'"
-    onclick="location.href='<% "/comment/" . $post->id %>'">
-<td><% $post->title %> <span style="padding-left:11px;font-size:9pt;color:#090;"><% $post->tags ||'' %></span></td>
+    onclick="location.href='<% "/posts/" . $post->id %>'">
+<td><a href="/posts/<% $post->id %>"><% $post->title %></a><span style="padding-left:11px;font-size:9pt;color:#090;"><% $post->tags ||'' %></span></td>
 <td><% defined $author ? '' : $post->author->username %></td>
 <td><% _('%1 comments', $post->comments->count ) %></td>
 </tr>

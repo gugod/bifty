@@ -50,6 +50,13 @@ on qr{^/comment/(\d+)}, run {
     show('/comment');
 };
 
+on qr{^/posts/(\d+)}, run {
+    my $post = Bifty::Model::Post->new();
+    $post->load_by_cols( id => $1 );
+    set post => $post;
+    show('/posts');
+};
+
 on qr'^/edit/(\d+)', run {
     my $post = Bifty::Model::Post->new();
     $post->load_by_cols( id => $1 );

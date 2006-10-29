@@ -1,0 +1,24 @@
+<&|/_elements/wrapper, title => $post->title, head_extra => $head_extra &>
+
+<& /fragments/post_entry, post => $post &>
+
+<& /_elements/google_adsense &>
+<& /_elements/adsense_referral &>
+
+<& /fragments/comments_of  , post => $post &>
+
+<& /fragments/comments_for , post => $post &>
+
+</&>
+<%init>;
+my $post_id = $post->id;
+my $head_extra = qq{
+  <link rel="alternate" type="application/atom+xml" title="Blog Post Comment Atom Feed" href="/feed/comment/$post_id/atom" />
+  <link rel="alternate" type="application/rss+xml" title="Blog Post Comment RSS Feed" href="/feed/comment/$post_id/rss" />
+};
+
+</%init>
+<%args>
+$action => undef
+$post
+</%args>

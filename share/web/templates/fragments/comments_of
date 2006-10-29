@@ -1,0 +1,34 @@
+% if ( $comments->count == 0 ) {
+    <h1>No Comments</h1>
+%   return;
+% }
+
+<h1>Comments</h1>
+<div class="comments">
+
+% while(my $comment = $comments->next ) {
+
+    <div class="comment">
+        By <% $comment->author->username %> on <% $comment->created_on %>
+        <div class="comment-body">
+            <% markdown( $emoticon->filter( $comment->body )) |n%>
+        </div>
+    </div>
+    <hr />
+
+% }
+
+</div>
+<%once>
+use Text::Markdown 'markdown';
+use Text::Emoticon::MSN;
+my $emoticon = Text::Emoticon::MSN->new();
+</%once>
+<%init>
+my $comments = $post->comments;
+$comments->order_by( column => 'created_on', order => 'DES' );
+
+</%init>
+<%args>
+$post
+</%args>
