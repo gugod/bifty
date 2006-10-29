@@ -18,7 +18,7 @@
 % Jifty::Mason::Halo->render_component_tree() if (Jifty->config->framework('DevelMode') );
 
 <div id="prchecker-img">
-<img src="http://www.prchecker.info/PR3_img.gif">
+<img src="http://www.prchecker.info/PR3_img.gif" alt="pagerank checker" />
 </div>
 
 </body>
