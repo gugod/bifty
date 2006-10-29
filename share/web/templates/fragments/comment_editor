@@ -1,16 +1,25 @@
-% if (Jifty->web->current_user->username) {
+% if ($action) {
+    
 <% Jifty->web->form->start() %>
 <% Jifty->web->form->next_page(url => '/comment/' . $post->id) %>
 <% $action->hidden('post', $post->id ) %>
 <% $action->hidden('created_on') %>
 <% $action->form_field('body') %>
-
 <% Jifty->web->form->submit( label => _('Post comment') ) %>
 <% Jifty->web->form->end() %>
+
 % } else {
+
 Please <% Jifty->web->tangent(label => "login", url => "/login") %> to write comment.
+
 % }
+
+<%init>;
+my $action;
+if (Jifty->web->current_user->username) {
+    $action = Jifty->web->new_action( class => 'CreateComment' );
+}
+</%init>
 <%args>
-$action
 $post
 </%args>

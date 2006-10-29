@@ -7,7 +7,7 @@
 
 <& /fragments/comments_of  , post => $post &>
 
-<& /fragments/comments_for , post => $post &>
+<& /fragments/comment_editor , post => $post &>
 
 </&>
 <%init>;

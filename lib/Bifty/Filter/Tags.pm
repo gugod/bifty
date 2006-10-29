@@ -8,10 +8,16 @@ sub encode {
     my $self = shift;
     my $value_ref = $self->value_ref;
     return unless $$value_ref;
-    $$value_ref = join " ", sort+uniq(split /\W+/, lc($$value_ref) );
+    $$value_ref = $self->canonicalize($$value_ref);
     return 1;
 }
 
 sub decode { }
+
+sub canonicalize {
+    my $class = shift;
+    my $value = shift;
+    return join " ", sort+uniq(split /\s+/, $value );
+}
 
 1;

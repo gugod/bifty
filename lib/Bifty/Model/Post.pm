@@ -40,6 +40,13 @@ column comments =>
 
 package Bifty::Model::Post;
 use base qw/Bifty::Record/;
+use Bifty::Filter::Tags;
+
+sub canonicalize_tags {
+    my $self = shift;
+    my $tags = shift;
+    return Bifty::Filter::Tags->canonicalize( $tags );
+}
 
 sub before_create {
     my $self = shift;
