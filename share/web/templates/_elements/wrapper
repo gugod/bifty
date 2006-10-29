@@ -17,9 +17,7 @@
   <div id="jifty-wait-message" style="display: none"><%_('Loading...')%></div>
 % Jifty::Mason::Halo->render_component_tree() if (Jifty->config->framework('DevelMode') );
 
-<div id="prchecker-img">
-<img src="http://www.prchecker.info/PR3_img.gif" alt="pagerank checker" />
-</div>
+<& /_elements/pagerank_checker &>
 
 </body>
 </html>

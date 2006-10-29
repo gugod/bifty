@@ -1,3 +1,4 @@
+% unless ( Jifty->config->framework('DevelMode') ) {
 <div class="google-adsense-referral">
 <script type="text/javascript"><!--
 google_ad_client = "pub-7018484007527096";
@@ -9,3 +10,4 @@ google_ad_channel = "6087231147";
 <script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
 </div>
+% }
