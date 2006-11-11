@@ -19,7 +19,8 @@ framework:
   Mailer: Sendmail
   MailerArgs: []
 
-  Plugins: []
+  Plugins:
+    - REST: {}
 
   Web: 
     BaseURL: http://localhost
