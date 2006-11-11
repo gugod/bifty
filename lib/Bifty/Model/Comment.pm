@@ -1,15 +1,13 @@
 package Bifty::Model::Comment;
 use strict;
 use warnings;
-
 use base qw/Bifty::Record/;
-
-use Jifty::DBI::Schema;
 use Bifty::Model::User;
 use Bifty::Model::Post;
 use Scalar::Defer;
 use DateTime;
-use Jifty::Record schema {
+use Jifty::DBI::Schema;
+use Jifty::DBI::Record schema {
 
     column author => refers_to Bifty::Model::User;
 
@@ -23,7 +21,7 @@ use Jifty::Record schema {
         filters are 'Jifty::DBI::Filter::DateTime', render_as 'text';
 
     column post => refers_to Bifty::Model::Post;
-}
+};
 
 sub since {'0.0.2'}
 
@@ -31,6 +29,7 @@ sub before_create {
     my $self = shift;
     my $args = shift;
     $args->{author} = $self->current_user->user_object;
+    $args->{created_on} = DateTime->now;
     return 1;
 }
 

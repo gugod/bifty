@@ -1,7 +1,7 @@
 % if ($action) {
     
 <% Jifty->web->form->start() %>
-<% Jifty->web->form->next_page(url => '/comment/' . $post->id) %>
+<% Jifty->web->form->next_page(url => '/posts/' . $post->id) %>
 <% $action->hidden('post', $post->id ) %>
 <% $action->hidden('created_on') %>
 <% $action->form_field('body') %>
