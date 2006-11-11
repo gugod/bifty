@@ -1,5 +1,4 @@
 <% Jifty->web->form->start() %>
-<% Jifty->web->form->next_page( url => '/') %>
 <% $action->form_field('title') %>
 <% $action->form_field('created_on') %>
 <% $action->form_field('tags') %>

@@ -60,8 +60,8 @@ on qr{^/posts/(\d+)}, run {
 on qr'^/edit/(\d+)', run {
     my $post = Bifty::Model::Post->new();
     $post->load_by_cols( id => $1 );
-    set 'action' =>
-        Jifty->web->new_action(class => 'UpdatePost', record => $post );
+    Jifty->web->form->next_page( url => Jifty->web->caller->path || "/posts/" . $post->id );
+    set 'action' => Jifty->web->new_action(class => 'UpdatePost', record => $post );
     show('/edit');
 };
 
