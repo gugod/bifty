@@ -1,7 +1,11 @@
 <body>
   <div id="headers">
     <h1 class="title">
-    <img src="/static/images/BiftyBETA.png" /> :: <% _($title) %>
+    <% Jifty->web->link( url => "/",
+         label => qq{<img src="/static/images/BiftyBETA.png" />},
+         escape_label => 0,
+         tooltip => "Always click this stupid logo to go back to homepage.") %>
+    :: <% _($title) %></h1>
     </h1>
   </div>
   <& sidebar &>
