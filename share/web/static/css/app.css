@@ -1,3 +1,7 @@
+#headers h1 {
+    height:90px;
+}
+
 #salutation {
     background:#f99;
     width:200px;
@@ -40,10 +44,13 @@ google-adsense-referral
 
 .google-sitesearch
 {
-  width:210px;
+  background:white;
   position:absolute;
-  top:51px;
+  top:5px;
+  right:250px;
   font-size:9pt;
+  width:250px;
+  border:2px solid black;
 }
 
 .google-adsense
