@@ -7,8 +7,8 @@
 <% Jifty->web->tangent( label => q{Sign in}, url => '/login' ) %>.  
 % }
 </div>
+
 <div id="navigation">
 <& /_elements/menu, menu => Jifty->web->navigation &>
 </div>
-<& /_elements/google_sitesearch &>
 

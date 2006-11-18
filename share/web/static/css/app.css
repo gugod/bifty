@@ -2,19 +2,23 @@ a, img {
     border: none;
 }
 
+#headers {
+    height:100px;
+}
+
 #headers h1 {
+    text-align: left;
     height:90px;
+    font-family: Monaco, Andale Mono, Arial, Sans serif;
+    font-size: 24pt;
+    font-weight: bold;
 }
 
 #salutation {
     background:#f99;
-    width:200px;
-    margin:5px;
+    margin:0px;
     padding:5px;
-    border:1px solid black;
-    position:absolute;
-    top:0px;
-    right:0px;
+    border:1px solid #e88;
 }
 
 #navigation {
@@ -29,7 +33,20 @@ a, img {
     margin: 0;
 }
 
-google-adsense-referral
+.bifty-list {
+    width: 700px;
+    margin: 1em auto;
+}
+
+.bifty-list td {
+    line-height: 1.2em;
+}
+
+.bifty-pager {
+    text-align:center;
+}
+
+.google-adsense-referral
 {
   font-size:9pt;
   padding:11px;
@@ -48,13 +65,10 @@ google-adsense-referral
 
 .google-sitesearch
 {
-  background:white;
-  position:absolute;
-  top:5px;
-  right:250px;
-  font-size:9pt;
-  width:250px;
-  border:2px solid black;
+  font-size:24pt;
+  margin:0px;
+  padding:5px;
+
 }
 
 .google-adsense

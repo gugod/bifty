@@ -1,15 +1,4 @@
-
-% if ($posts->pager->last_page > 1) {
-%   if ($posts->pager->previous_page) {
-      <% Jifty->web->link( label => "« Later Posts", onclick => { args => { page => $posts->pager->previous_page } } ) %>
-%   }
-    Page <% $page %> of <% $posts->pager->last_page %>
-%   if ($posts->pager->next_page) {
-        <% Jifty->web->link( label => "Earlier Posts »", onclick => { args => { page => $posts->pager->next_page } } ) %>
-%    }
-% }
-
-<table style="border:1px; border-collapse:collapse; width:100%;">
+<table class="bifty-list">
 %# Special treatment for the first post.
 % if( my $post = $posts->next ) {
 <tr style="cursor:pointer;"
@@ -44,6 +33,19 @@
 </tr>
 % }
 </table>
+
+<div class="bifty-pager">
+% if ($posts->pager->last_page > 1) {
+%   if ($posts->pager->previous_page) {
+      <% Jifty->web->link( label => "« Later Posts", onclick => { args => { page => $posts->pager->previous_page } } ) %>
+%   }
+    Page <% $page %> of <% $posts->pager->last_page %>
+%   if ($posts->pager->next_page) {
+        <% Jifty->web->link( label => "Earlier Posts »", onclick => { args => { page => $posts->pager->next_page } } ) %>
+%    }
+% }
+</div>
+
 
 <%init>
 use Text::Markdown qw/markdown/;

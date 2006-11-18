@@ -14,6 +14,8 @@ my $view = $top->child('View');
 $view->child(List => url => "/view/list");
 $view->child(Full => url => "/view/full");
 
+$top->child(Search => url => "/search" );
+
 if (Jifty->config->framework('AdminMode') ) {
     $top->child(Administration       => url => "/__jifty/admin/", sort_order => 998);
     $top->child(OnlineDocs       => url => "/__jifty/online_docs/", label => 'Online docs',  sort_order => 999);
