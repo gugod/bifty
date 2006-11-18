@@ -16,6 +16,10 @@ $view->child(Full => url => "/view/full");
 
 $top->child(Search => url => "/search" );
 
+if (Jifty->web->current_user->id and Jifty->web->current_user->user_object) {
+$top->child(Logout => url => "/logout");
+}
+
 if (Jifty->config->framework('AdminMode') ) {
     $top->child(Administration       => url => "/__jifty/admin/", sort_order => 998);
     $top->child(OnlineDocs       => url => "/__jifty/online_docs/", label => 'Online docs',  sort_order => 999);

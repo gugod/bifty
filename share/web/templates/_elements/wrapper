@@ -4,12 +4,11 @@
     <div id="hd">
 
       <div id="headers">
-        <h1 class="title">
-    <% Jifty->web->link( url => "/",
-         label => qq{<img src="/static/images/BiftyBETA.png" />},
-         escape_label => 0,
-         tooltip => "Always click this stupid logo to go back to homepage.") %>
-    :: <% _($title) %></h1>
+        <% Jifty->web->link( url => "/",
+                             label => qq{<img src="/static/images/BiftyBETA.png" />},
+                             escape_label => 0,
+                             tooltip => "Always click this stupid logo to go back to homepage.") %>
+        <h1 class="title"><% _($title) %></h1>
       </div>
 
     </div><!-- /hd -->

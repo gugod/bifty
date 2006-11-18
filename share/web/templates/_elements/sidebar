@@ -1,12 +1,10 @@
+% unless (Jifty->web->current_user->id and Jifty->web->current_user->user_object) {
+    
 <div id="salutation">
-% if (Jifty->web->current_user->id and Jifty->web->current_user->user_object) {
-<%_('Hiya, %1.',Jifty->web->current_user->username)%>
-<% Jifty->web->link(url => "/logout", label => "Logout" ) %>
-% }  else {
 <%_(q{You're not currently signed in.})%>
-<% Jifty->web->tangent( label => q{Sign in}, url => '/login' ) %>.  
-% }
+<% Jifty->web->tangent( label => 'Sign in', url => '/login' ) %>.  
 </div>
+% }
 
 <div id="navigation">
 <& /_elements/menu, menu => Jifty->web->navigation &>

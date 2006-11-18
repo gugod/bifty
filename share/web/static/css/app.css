@@ -6,12 +6,18 @@ a, img {
     height:100px;
 }
 
-#headers h1 {
+#headers .title {
     text-align: left;
-    height:90px;
     font-family: Monaco, Andale Mono, Arial, Sans serif;
-    font-size: 24pt;
+    font-size: 20pt;
     font-weight: bold;
+    line-height:35pt;
+    color: #499ede;
+    text-shadow: 3px 3px 3px #def;
+    border:none;
+    margin-top:-90px;
+    margin-left:160px;
+    width:600px;
 }
 
 #salutation {
@@ -21,15 +27,20 @@ a, img {
     border:1px solid #e88;
 }
 
-#navigation {
+div#navigation {
     margin: 0px;
+    width: 100%;
 }
 
-#navigation .menu {
+div#navigation ul {
+    width: 100%;
+}
+
+div#navigation .menu {
     background:#fff;
 }
 
-#navigation .menu li {
+div#navigation .menu li {
     margin: 0;
 }
 
@@ -77,3 +88,68 @@ a, img {
   margin: 5px 0;
 }
 
+.entry-title {
+    display:none;
+    text-align: left;
+    font-family: Monaco, Andale Mono, Arial, Sans serif;
+    font-size: 24pt;
+    font-weight: bold;
+    line-height:35pt;
+    color: #499ede;
+    text-shadow: 3px 3px 3px #def;
+}
+
+.entry-meta {
+    font-size:9pt;
+    color:grey;
+}
+
+.entry-meta dt {
+    width:50px;
+    height:1.5em;
+    border-right:1px solid;
+}
+
+.entry-meta dd {
+    padding-left:15px;
+    width:190px;
+    overflow:hidden;
+    margin-top:-1.5em;
+    margin-left:50px;
+    height:1.5em;
+    text-wrap:no-wrap;
+}
+
+
+.entry-body {
+    font-size:16pt;
+    margin: 24px 0;
+    padding:11px;
+    border: 2px solid #aaa;
+}
+
+.entry-operation {
+    border: 2px dotted #aaa;
+    text-align:right;
+    margin: 5px 0;
+    padding: 5px 5px;
+}
+
+.comments {
+    margin:5px 0;
+}
+
+.comments .title {
+    font-size:18pt;
+}
+
+.comment .entry-meta {
+    color:#aaa;
+}
+
+.comment .entry-body {
+    font-size:11pt;
+    margin: 11px 0;
+    padding:11px;
+    border: none;
+}

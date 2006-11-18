@@ -1,17 +1,23 @@
 <div class="entry">
-    <h3 class="entry-header"><% $post->title %></h3>
-    <div class="entry-meta">
-      By: <em><% $post->author->username %></em><br/>
-      Tags: <em><% $post->tags || '' %></em><br/>
-      Date: <em class="date"><% $post->created_on %></em><br/>
-% if (  Jifty->web->current_user->username and $post->author->username eq  Jifty->web->current_user->username ) {
-<% Jifty->web->tangent( label => "Edit", url => "/edit/" . $post->id ) %>
-% }
 
+    <div class="entry-meta">
+      <h3 class="entry-title"><% $post->title %></h3>
+      <dt>By</dt><dd><% $post->author->username %></dd>
+      <dt>Tags</dt><dd><% $post->tags || '' %></dd>
+      <dt>Date</dt><dd><% $post->created_on %></dd>
     </div>
+
     <div class="entry-body">
       <% markdown( $emoticon->filter($post->body) ) |n%>
     </div>
+
+
+% if ( Jifty->web->current_user->username and $post->author->username eq Jifty->web->current_user->username ) {
+    <div class="entry-operation">
+      <% Jifty->web->tangent( label => "Edit", url => "/edit/" . $post->id ) %>
+    </div>
+% }  
+
 </div>
 <%args>
 $post
