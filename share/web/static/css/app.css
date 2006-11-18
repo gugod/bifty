@@ -126,6 +126,9 @@ div#navigation .menu li {
     margin: 24px 0;
     padding:11px;
     border: 2px solid #aaa;
+
+    -moz-border-radius: 12px;
+    border-radius: 12px;
 }
 
 .entry-operation {

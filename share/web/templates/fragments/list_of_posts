@@ -13,7 +13,7 @@
 </tr>
 <tr>
 <td colspan="3">
-   <div style="padding:12px; margin:5px auto; width:80%; border: 2px solid black;">
+   <div class="entry-body">
       <% markdown( $emoticon->filter($post->body) ) |n%>
 
       <& /_elements/google_adsense &>
