@@ -112,7 +112,7 @@ div#navigation .menu li {
 
 .entry-meta dd {
     padding-left:15px;
-    width:190px;
+    width:600px;
     overflow:hidden;
     margin-top:-1.5em;
     margin-left:50px;
@@ -152,4 +152,10 @@ div#navigation .menu li {
     margin: 11px 0;
     padding:11px;
     border: none;
+}
+
+#htmltagcloud {
+  width:75%;
+  margin:0 auto;
+  line-height:2em;
 }
