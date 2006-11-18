@@ -55,6 +55,13 @@ sub take_action {
     # Set up our login message
     $self->result->message("Welcome back, " . $user->username() . "." );
 
+    # Event
+    my $event = Bifty::Model::Event->new();
+    my ($id, $status) = $event->create(
+        name => 'login',
+        user => $user->user_object,
+    );
+
     return 1;
 }
 

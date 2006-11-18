@@ -16,6 +16,11 @@ use base qw/Bifty::Action Jifty::Action/;
 
 sub take_action {
     my $self = shift;
+
+    # Event
+    my $event = Bifty::Model::Event->new;
+    $event->create( name => "logout" );
+
     Jifty->web->current_user(undef);
     return 1;
 }
