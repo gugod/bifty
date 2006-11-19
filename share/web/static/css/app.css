@@ -2,6 +2,10 @@ a, img {
     border: none;
 }
 
+p {
+    margin: 1em 0;
+}
+
 #headers {
     height:100px;
 }
