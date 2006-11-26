@@ -49,12 +49,13 @@ div#navigation .menu li {
 }
 
 .bifty-list {
-    width: 700px;
     margin: 1em auto;
+    width:auto;
 }
 
 .bifty-list td {
     line-height: 1.2em;
+    padding: 0 5px;
 }
 
 .bifty-pager {
