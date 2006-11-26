@@ -1,5 +1,5 @@
 <body>
-  <div id="doc" class="yui-t7">
+  <div id="doc" class="yui-t4">
 
     <div id="hd">
 
@@ -10,38 +10,39 @@
                              tooltip => "Always click this stupid logo to go back to homepage.") %>
         <h1 class="title"><% _($title) %></h1>
       </div>
-
+% if (Jifty->config->framework('AdminMode') ) {
+            <div class="warning admin_mode">
+              <%_('Alert')%>: <% Jifty->web->tangent( label => _('Administration mode is enabled.') , url => '/__jifty/admin/')%>
+            </div>
+% }
+      <& sidebar &>
     </div><!-- /hd -->
 
     <div id="bd">
-    
-      <& sidebar &>
-        <div id="content">
-          <a name="content"></a>
+      <div id="yui-main">
+        <div class="yui-b">
+          <div id="content">
+            <a name="content"></a>
+            <% Jifty->web->render_messages %>
+            <% $m->content |n%>
+            <& /_elements/keybindings &>
+            <div id="jifty-wait-message" style="display: none"><%_('Loading...')%></div>
 
-% if (Jifty->config->framework('AdminMode') ) {
-          <div class="warning admin_mode">
-              <%_('Alert')%>: <% Jifty->web->tangent( label => _('Administration mode is enabled.') , url => '/__jifty/admin/')%>
-          </div>
-% }
+          </div><!-- /content -->
+        </div><!-- /yui-b -->
+      </div><!-- /yui-main -->
 
-<% Jifty->web->render_messages %>
-
-<% $m->content |n%>
-
-<& /_elements/keybindings &>
-  
-  <div id="jifty-wait-message" style="display: none"><%_('Loading...')%></div>
-
-% Jifty::Mason::Halo->render_component_tree() if (Jifty->config->framework('DevelMode') );
+      <div class="yui-b">
+        <& /fragments/all_tags &>
+      </div>
     </div><!-- /bd -->
 
     <div id="ft">        
       <& /_elements/pagerank_checker &>
     </div><!-- /ft -->
-
   </div><!-- /doc -->
 
+% Jifty::Mason::Halo->render_component_tree() if (Jifty->config->framework('DevelMode') );
 </body>
 </html>
 % Jifty->handler->stash->{'in_body'} = 0;

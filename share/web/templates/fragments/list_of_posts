@@ -1,27 +1,4 @@
 <table class="bifty-list">
-%# Special treatment for the first post.
-% if( my $post = $posts->next ) {
-<tr style="cursor:pointer;"
-    onmouseover="this.style.background='#ffc'"
-    onmouseout="this.style.background='#fff'"
-    onclick="location.href='<% "/comment/" . $post->id %>'">
-<td><a href="/posts/<% $post->id %>"><% $post->title %></a><span style="padding-left:11px;font-size:9pt;color:#090;"><% $post->tags ||'' %></span></td>
-
-<td><% defined $author ? '': $post->author->username %></td>
-
-<td><% _('%1 comments', $post->comments->count ) %></td>
-</tr>
-<tr>
-<td colspan="3">
-   <div class="entry-body">
-      <% markdown( $emoticon->filter($post->body) ) |n%>
-
-      <& /_elements/google_adsense &>
-      <& /_elements/adsense_referral &>
-   </div>
-</td>
-</tr>
-% }
 % while (my $post = $posts->next) {
 <tr style="cursor:pointer;"
     onmouseover="this.style.background='#ffc'"
@@ -45,7 +22,6 @@
 %    }
 % }
 </div>
-
 
 <%init>
 use Text::Markdown qw/markdown/;

@@ -1,0 +1,19 @@
+<div id="bifty-all-tags">
+  <h2 class="title">All Tags</h2>
+  <% $cloud->html_and_css() |n %>
+</div>
+<%init>
+use HTML::TagCloud;
+my $tags = {};
+my $posts = Bifty::Model::PostCollection->new();
+$posts->unlimit();
+while ( my $post = $posts->next ) {
+    for( split( /\s+/, $post->tags() ) ) {
+        $tags->{$_}++;
+    }
+}
+my $cloud = HTML::TagCloud->new;
+for (keys %$tags) {
+    $cloud->add( $_, "/tags/$_", $tags->{$_} );
+}
+</%init>

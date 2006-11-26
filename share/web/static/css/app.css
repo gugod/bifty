@@ -166,3 +166,31 @@ div#navigation .menu li {
   margin:0 auto;
   line-height:2em;
 }
+
+
+h2.title {
+    width:100%;
+    text-align:center;
+    font-size: 16pt;
+}
+
+#bifty-all-tags {
+    background:rgb(34,174,230);
+    padding: 5px 0 20px 0;
+    -moz-border-radius:12px;
+    border-radius:12px;
+    color:rgb(240,237,206);
+}
+
+#bifty-all-tags h2.title {
+    color: #fff;
+    margin-bottom: 11px;
+}
+
+#bifty-all-tags a {
+    color:rgb(245,176,144);
+}
+
+#bifty-all-tags a:hover {
+    color:rgb(240,237,206);
+}
