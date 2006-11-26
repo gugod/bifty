@@ -1,11 +1,9 @@
 <% Jifty->web->form->start() %>
 <% $action->form_field('title') %>
-<% $action->form_field('created_on') %>
 <% $action->form_field('tags') %>
 <% $action->form_field('body') %>
 <% Jifty->web->form->submit( label => _('Save') ) %>
 <% Jifty->web->form->end() %>
-
 <%args>
 $action
 </%args>
