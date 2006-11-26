@@ -59,7 +59,7 @@ sub take_action {
     my $event = Bifty::Model::Event->new();
     my ($id, $status) = $event->create(
         name => 'login',
-        user => $user->user_object,
+        author => $user->user_object,
     );
 
     return 1;

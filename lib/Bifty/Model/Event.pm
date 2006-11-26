@@ -11,23 +11,23 @@ use Jifty::DBI::Record schema {
 
     column
         name => type is 'text',
-        label is 'Name', default is 'unknown';
+        default is 'unknown';
 
-    column user => refers_to Bifty::Model::User;
+    column author => refers_to Bifty::Model::User;
 
     column
         tags => type is 'text',
-        label is 'Tags', render_as 'Textarea',
+        label is 'Tags',
         input_filters are 'Bifty::Filter::Tags';
 
-    column
-        created_on => type is 'timestamp',
-        label is 'Created On', default is defer { DateTime->now },
-        filters are 'Jifty::DBI::Filter::DateTime', render_as 'text';
+    column created_on =>
+        type is 'timestamp',
+        is immutable,
+        filters are 'Jifty::DBI::Filter::DateTime';
 
     column
         body => type is 'text',
-        label is 'Content', render_as 'Textarea',
+        label is 'Content',
         default is '';
 
 };
@@ -43,8 +43,9 @@ sub canonicalize_tags {
 sub before_create {
     my $self = shift;
     my $args = shift;
-    $args->{user} = $self->current_user->user_object
-        unless exists($args->{user});
+    $args->{author} = $self->current_user->user_object
+        unless exists($args->{author});
+    $args->{created_on} = DateTime->now;
     return 1;
 }
 
