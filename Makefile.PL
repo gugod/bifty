@@ -2,6 +2,7 @@ use inc::Module::Install;
 name('Bifty');
 version('0.01');
 requires('Jifty' => '0.60722',
+         'Jifty::DBI' => '0.25',
          'Text::Markdown' => 0,
          'Digest::SHA'    => 0,
          'XML::Feed'      => 0,

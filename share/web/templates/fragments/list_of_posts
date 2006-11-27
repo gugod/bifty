@@ -4,7 +4,9 @@
     onmouseover="this.style.background='#ffc'"
     onmouseout="this.style.background='#fff'"
     onclick="location.href='<% "/posts/" . $post->id %>'">
-<td><a href="/posts/<% $post->id %>"><% $post->title %></a><span style="padding-left:11px;font-size:9pt;color:#090;"><% $post->tags ||'' %></span></td>
+  <td>
+    <a class="title" href="/posts/<% $post->id %>"><% $post->title %></a>
+    <span class="tags" style="padding-left:11px;font-size:9pt;color:#090;"><% $post->tags ||'' %></span></td>
 <td><% defined $author ? '' : $post->author->username %></td>
 <td><% _('%1 comments', $post->comments->count ) %></td>
 </tr>
@@ -22,6 +24,7 @@
 %    }
 % }
 </div>
+
 
 <%init>
 use Text::Markdown qw/markdown/;

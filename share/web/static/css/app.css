@@ -50,12 +50,21 @@ div#navigation .menu li {
 
 .bifty-list {
     margin: 1em auto;
-    width:auto;
+    width: 40em;
+    *width: 39.0360em; /* IE */
 }
 
 .bifty-list td {
     line-height: 1.2em;
     padding: 0 5px;
+    font-size: 14pt;
+}
+
+.bifty-list td .title {
+}
+
+.bifty-list td .tags {
+    display: block;
 }
 
 .bifty-pager {
@@ -176,22 +185,22 @@ h2.title {
 }
 
 #bifty-all-tags {
-    background:rgb(34,174,230);
     padding: 5px 0 20px 0;
     -moz-border-radius:12px;
     border-radius:12px;
-    color:rgb(240,237,206);
+    color:rgb(34,174,230);
+    background:rgb(240,237,206);
 }
 
 #bifty-all-tags h2.title {
-    color: #fff;
+    color: rgb(224,124,102);
     margin-bottom: 11px;
 }
 
 #bifty-all-tags a {
-    color:rgb(245,176,144);
+    color:rgb(34,174,230);
 }
 
 #bifty-all-tags a:hover {
-    color:rgb(240,237,206);
+    color: rgb(224,124,102);
 }
