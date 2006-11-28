@@ -10,10 +10,6 @@ if (Jifty->web->current_user->username) {
 # $top->child(Tags => url => "/tags");
 # $top->child(Authors => url => "/authors");
 
-my $view = $top->child('View');
-$view->child(List => url => "/view/list");
-$view->child(Full => url => "/view/full");
-
 $top->child(Search => url => "/search" );
 
 if (Jifty->web->current_user->id and Jifty->web->current_user->user_object) {
