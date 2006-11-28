@@ -1,0 +1,18 @@
+<div id="bifty-all-authors">
+<% $cloud->html_and_css(50) |n%>
+</div>
+<%init>
+use HTML::TagCloud;
+
+my $authors = {};
+my $it = Bifty::Model::PostCollection->new();
+$it->unlimit();
+while ( my $i = $it->next ) {
+    $authors->{ $i->author->username }++;
+}
+
+my $cloud = HTML::TagCloud->new;
+for (keys %$authors) {
+    $cloud->add($_, "/view/$_", $authors->{$_} );
+}
+</%init>

@@ -33,8 +33,23 @@
       </div><!-- /yui-main -->
 
       <div class="yui-b">
-        <& /fragments/all_tags &>
+
+        <div id="bifty-side" class="yui-navset">
+          <ul class="yui-nav">
+            <li class="selected active" ><a href="#tab1">Tags</a></li>
+            <li><a href="#tab2">Authors</a></li>
+          </ul>
+          <div class="yui-content">
+            <div><& /fragments/all_tags &></div>
+            <div><& /fragments/all_authors &></div>
+          </div>
+        </div>
+        <script type="text/javascript">
+          new YAHOO.widget.TabView("bifty-side");
+        </script>
+
       </div>
+
     </div><!-- /bd -->
 
     <div id="ft">        

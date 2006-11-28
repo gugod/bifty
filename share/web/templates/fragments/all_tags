@@ -1,5 +1,4 @@
 <div id="bifty-all-tags">
-  <h2 class="title">All Tags</h2>
   <% $cloud->html_and_css() |n %>
 </div>
 <%init>

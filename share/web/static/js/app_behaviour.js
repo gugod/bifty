@@ -132,5 +132,6 @@
 
 Behaviour.register({
     "textarea.argument-body": Bifty.textarea_setup
+//    "div#bifty-side":Bifty.tab_setup
 });
 

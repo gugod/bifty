@@ -184,23 +184,48 @@ h2.title {
     font-size: 16pt;
 }
 
-#bifty-all-tags {
-    padding: 5px 0 20px 0;
+#bifty-side {
+    padding: 0 0 20px 0;
     -moz-border-radius:12px;
     border-radius:12px;
     color:rgb(34,174,230);
     background:rgb(240,237,206);
 }
 
-#bifty-all-tags h2.title {
-    color: rgb(224,124,102);
-    margin-bottom: 11px;
-}
-
-#bifty-all-tags a {
+#bifty-side a {
     color:rgb(34,174,230);
 }
 
-#bifty-all-tags a:hover {
-    color: rgb(224,124,102);
+#bifty-side a:hover {
+    color:rgb(224,124,102);
+}
+
+.yui-nav  {
+    background:#fff;
+    margin:0 0 11px 0;
+}
+
+.yui-nav li {
+    -moz-border-radius-topleft: 11px;
+    -moz-border-radius-topright: 11px;
+    padding:5px;
+    background:#ccc;
+}
+.yui-nav li.selected {
+    background:rgb(240,237,206);
+}
+
+.yui-nav li a {
+    padding: 0 3px;
+    color:#aaa !important;
+    font-size:16pt;
+    text-decoration:none;
+}
+
+.yui-nav li a:hover {
+    color: rgb(224,124,102) !important;
+}
+
+.yui-nav li.selected a {
+    color: rgb(224,124,102) !important;
 }

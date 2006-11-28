@@ -10,5 +10,6 @@
 @import "autocomplete.css";
 @import "yui/calendar/calendar.css";
 @import "yui/reset-fonts-grids/reset-fonts-grids-min.css";
+@import "yui/tabview/tabs.css";
 @import "notices.css";
 @import "app.css";

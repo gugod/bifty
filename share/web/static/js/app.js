@@ -2,6 +2,7 @@
 
 Bifty = {}
 
+
 Bifty.Textarea = {
     'min_height': 80
 }
@@ -21,3 +22,4 @@ Bifty.textarea_setup = function(element) {
         Bifty.textarea_resize( element );
     };
 }
+

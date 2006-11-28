@@ -8,7 +8,7 @@ if (Jifty->web->current_user->username) {
 }
 
 # $top->child(Tags => url => "/tags");
-$top->child(Authors => url => "/authors");
+# $top->child(Authors => url => "/authors");
 
 my $view = $top->child('View');
 $view->child(List => url => "/view/list");
