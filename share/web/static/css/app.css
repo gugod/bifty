@@ -162,13 +162,13 @@ div#navigation .menu li {
 
 .comment .entry-meta {
     color:#aaa;
+    margin:1em 0 0 0;
 }
 
 .comment .entry-body {
     font-size:11pt;
-    margin: 11px 0;
-    padding:11px;
-    border: none;
+    margin:0 0 1em 1em;
+    padding:0 1em 1em 1em;
 }
 
 #htmltagcloud {
@@ -176,7 +176,6 @@ div#navigation .menu li {
   margin:0 auto;
   line-height:2em;
 }
-
 
 h2.title {
     width:100%;
