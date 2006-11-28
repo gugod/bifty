@@ -5,7 +5,7 @@
     onmouseout="this.style.background='#fff'"
     onclick="location.href='<% "/posts/" . $post->id %>'">
   <td>
-    <a class="title" href="/posts/<% $post->id %>"><% $post->title %></a>
+    <% Jifty->web->link( label => $post->title, url => "/posts/" . $post->id ) %>
     <span class="tags" style="padding-left:11px;font-size:9pt;color:#090;"><% $post->tags ||'' %></span></td>
 <td><% defined $author ? '' : $post->author->username %></td>
 <td><% _('%1 comments', $post->comments->count ) %></td>
