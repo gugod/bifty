@@ -19,37 +19,12 @@
     </div><!-- /hd -->
 
     <div id="bd">
-      <div id="yui-main">
-        <div class="yui-b">
-          <div id="content">
-            <a name="content"></a>
-            <% Jifty->web->render_messages %>
-            <% $m->content |n%>
-            <& /_elements/keybindings &>
-            <div id="jifty-wait-message" style="display: none"><%_('Loading...')%></div>
-
-          </div><!-- /content -->
-        </div><!-- /yui-b -->
-      </div><!-- /yui-main -->
-
-      <div class="yui-b">
-
-        <div id="bifty-side" class="yui-navset">
-          <ul class="yui-nav">
-            <li class="selected active" ><a href="#tab1">Tags</a></li>
-            <li><a href="#tab2">Authors</a></li>
-          </ul>
-          <div class="yui-content">
-            <div><& /fragments/all_tags &></div>
-            <div><& /fragments/all_authors &></div>
-          </div>
-        </div>
-        <script type="text/javascript">
-          new YAHOO.widget.TabView("bifty-side");
-        </script>
-
-      </div>
-
+      <div id="content">
+        <a name="content"></a>
+        <% Jifty->web->render_messages %>
+        <% $m->content |n%>
+        <& /_elements/keybindings &>
+      </div><!-- /content -->
     </div><!-- /bd -->
 
     <div id="ft">        

@@ -1,3 +1,5 @@
 <&|/_elements/wrapper, title => "Search" &>
+<div class="yui-g">
 <& /_elements/google_sitesearch &>
+</div>
 </&>

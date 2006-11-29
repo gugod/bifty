@@ -2,5 +2,7 @@
 $action
 </%args>
 <&|/_elements/wrapper, title => _("Post to your weblog") &>
+<div class="yui-g">
 <& "/fragments/post_editor", action => $action  &>
+</div>
 </&>
