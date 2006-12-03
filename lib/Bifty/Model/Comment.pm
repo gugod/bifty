@@ -13,7 +13,7 @@ use Jifty::DBI::Record schema {
 
     column
         body => type is 'text',
-        label is 'Comment', render_as 'Textarea', is mandatory;
+        label is 'Comment', render as 'Textarea', is mandatory;
 
     column
         created_on => type is 'timestamp',

@@ -16,7 +16,7 @@ use Jifty::Record schema {
 
     column
         password => type is 'text',
-        label is 'Password', render_as 'password',
+        label is 'Password', render as 'password',
         input_filters are 'Bifty::Filter::SHA';
 
 };

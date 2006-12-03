@@ -18,18 +18,18 @@ use Jifty::DBI::Record schema {
 
     column
         body => type is 'text',
-        label is 'Content', render_as 'Textarea',
+        label is 'Content', render as 'Textarea',
         default is 'A blog without words';
 
     column
         tags => type is 'text',
-        label is 'Tags', render_as 'Textarea',
+        label is 'Tags', render as 'Textarea',
         input_filters are 'Bifty::Filter::Tags';
 
     column
         created_on => type is 'timestamp',
         label is 'Created On', default is defer { DateTime->now },
-        filters are 'Jifty::DBI::Filter::DateTime', render_as 'text';
+        filters are 'Jifty::DBI::Filter::DateTime', render as 'text';
 
     column comments => refers_to Bifty::Model::CommentCollection by 'post';
 
