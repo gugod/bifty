@@ -6,6 +6,8 @@
 
 <h1 class="title">Comments</h1>
 
+<& /fragments/comment_editor , post => $post &>
+
 % while(my $comment = $comments->next ) {
 
     <div class="comment">

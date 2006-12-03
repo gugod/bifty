@@ -7,8 +7,6 @@
 
 <& /fragments/comments_of  , post => $post &>
 
-<& /fragments/comment_editor , post => $post &>
-
 </&>
 <%init>;
 my $post_id = $post->id;

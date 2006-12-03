@@ -103,12 +103,7 @@ div#navigation .menu li {
 }
 
 .entry-title {
-    display:none;
-    text-align: left;
     font-family: Monaco, Andale Mono, Arial, Sans serif;
-    font-size: 24pt;
-    font-weight: bold;
-    line-height:35pt;
     color: #499ede;
     text-shadow: 3px 3px 3px #def;
 }
@@ -228,3 +223,4 @@ h2.title {
 .yui-nav li.selected a {
     color: rgb(224,124,102) !important;
 }
+
