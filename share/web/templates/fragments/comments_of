@@ -6,8 +6,6 @@
 
 <h1 class="title">Comments</h1>
 
-<& /fragments/comment_editor , post => $post &>
-
 % while(my $comment = $comments->next ) {
 
     <div class="comment">
@@ -28,7 +26,7 @@ my $emoticon = Text::Emoticon::MSN->new();
 </%once>
 <%init>
 my $comments = $post->comments;
-$comments->order_by( column => 'created_on', order => 'DES' );
+$comments->order_by( column => 'created_on', order => 'ASC' );
 
 </%init>
 <%args>
