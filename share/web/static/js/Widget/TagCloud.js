@@ -11,11 +11,11 @@ Widget.TagCloud.EXPORT = []
 Widget.TagCloud.EXPORT_OK = []
 Widget.TagCloud.EXPORT_TAGS = {}
 
-Widget.TagCloud.show = function(data) {
+Widget.TagCloud.show = function(data, param) {
     var tc = new Widget.TagCloud()
     tc.data(data)
     tc.create()
-    return tc.show()
+    return tc.show(param)
 }
 
 Widget.TagCloud.prototype = (function(){return {
@@ -106,79 +106,63 @@ Widget.TagCloud - TagCloud effect made easy
 
   # Just show something
   var tc = Widget.TagCloud.show(data)
-  # Hide it
-  tc.hide()
 
   # OO-style
-  var tc = new Widget.TagCloud
+  var tc = new Widget.TagCloud()
   tc.data(data)
   tc.create()
   tc.show()
-  # Hide it
-  tc.hide()
 
 =head1 DESCRIPTION
 
-=over 4
+This is a pure javascript implementation of tag cloud. It creates
+markups and CSS for you so you don't need to worry about it too much.
+The simplest usage looks like this:
 
-=item Requires no extra image files
+    Widget.TagCloud.show(data)
 
-=item Requires no extra CSS files and rules
+This appends a new div to document.body. If you would like to control
+that, you could say something like:
 
-=item Optionally supports script.aculo.us effects library.
+    var elem = document.getElementById("my-tag-cloud-div")
+    Widget.TagCloud.show(data, { parentNode: elem })
 
-=item Optionally supports JSAN effects library.
+That would append a new div to element C<elem>.
 
-=item Works on IE, Firefox, and Safari.
+The format of data is like this:
 
-=back
+    var data = [
+        { tag: "Foo", url: "/tag/Foo", count: 10 },
+        { tag: "Bar", url: "/tag/Bar", count: 20 },
+        { tag: "Baz", url: "/tag/Baz", count: 30 }
+    ];
 
-It's made easy to use for javascript programmers who wants to show off
-some cool stuff quickly with too much bothering about CSS and IE
-issues.
+It's a array of hash. Each element has 3 keys: tag, url, count.  tag
+and url will be used to create a link element. count will be used to
+show different font size. Required CSS are dynamically generated.
 
-Here's the code for a "Hello World" lightbox:
+If you prefer more OO-ish way, here's 4 required steps:
 
-    Widget.TagCloud.show("Hello World");
+First, create an object:
 
-It creates a default white box on top of a default grey transparent
-background with "Hello World" inside. You may click anywhere to close
-that hello-world lightbox, that is the default behaviour. Or if you're
-doing some serious stuffs, here's the OO veresion of "Hello World":
+  var tc = new Widget.TagCloud()
 
-    var box = new Widget.TagCloud;
-    box.content("Hello World");
-    box.show();
+Second and third, create markup:
 
-If you want to close the lightbox in the code, do this:
+  tc.data(data)
+  tc.create()
 
-    box.hide();
+Last, put into document.body
 
-If you have script.aculo.us effects library loaded, you could have fancy
-effetcs using OO interface:
+  tc.show()
 
-    var box = new Widget.TagCloud;
-    box.content("Hello World");
-    box.effects("Appear");
-    box.show();
+Again, show() method could have parameter indicating the parent node
+of tag cloud div:
 
-The C<box.effects()> methods sets the effect that will be applied to
-the box when it's showing. It takes strings which means effect
-names. Currently support values are: 'Appear', 'Grow', 'BlindDown',
-'Shake', and 'RoundedCorners'. Except for 'RoundedCorners', which is
-available on JSAN as C<Effect.RoundedCorners>, the rest four are
-availale in script.aculo.us effects library. You must load these
-libraries on your own if you want to see these
-effects.
+  tc.show({ parentNode: elem })
 
-C<'RoundedCorners'> could be combined with others. For example:
-
-    box.effects('RoundedCorners', 'Appear');
-
-This means to have a box with rounded corners fading in.
-
-That's pretty much about everything you should know to use this
-library.
+That's about everything you should now to use this library. Please
+give me some feedback about any kinds suggesstions.
 
 =head1 AUTHOR
 
