@@ -1,9 +1,14 @@
-<div id="bifty-all-authors">
-<% $cloud->html_and_css(50) |n%>
-</div>
-<%init>
-use HTML::TagCloud;
+<div id="bifty-all-authors"></div>
+<script type="text/javascript"><!--
+var data = <% JSON::Syck::Dump($data) |n%>
+var tc = new Widget.TagCloud()
+tc.data(data)
+tc.create()
+tc.show({parentNode: document.getElementById("bifty-all-authors") })
+//--></script>
 
+<%init>
+use JSON::Syck;
 my $authors = {};
 my $it = Bifty::Model::PostCollection->new();
 $it->unlimit();
@@ -11,8 +16,8 @@ while ( my $i = $it->next ) {
     $authors->{ $i->author->username }++;
 }
 
-my $cloud = HTML::TagCloud->new;
+my $data = [];
 for (keys %$authors) {
-    $cloud->add($_, "/view/$_", $authors->{$_} );
+    push @$data, { tag => $_, url => "/view/$_", count => $authors->{$_} };
 }
 </%init>

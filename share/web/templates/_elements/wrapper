@@ -5,7 +5,7 @@
 
       <div id="headers">
         <% Jifty->web->link( url => "/",
-                             label => qq{<img src="/static/images/BiftyBETA.png" />},
+                             label => qq{<img src="/static/images/BiftyBETA.png" alt="Bifty &beta;" />},
                              escape_label => 0,
                              tooltip => "Always click this stupid logo to go back to homepage.") %>
         <h1 class="title"><% _($title) %></h1>
