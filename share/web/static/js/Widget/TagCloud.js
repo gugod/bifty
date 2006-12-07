@@ -26,7 +26,7 @@ Widget.TagCloud.prototype = (function(){return {
     create: function() {
         var d = this._data.sort(function(a, b) {return a.count - b.count})
         var max = d[d.length-1].count
-        var factor = 36/Math.log(max)
+        var factor = 30/Math.log(max)
 
         this.data(this._data.sort(function(a, b) {
             var ta = a.tag.toLowerCase()
@@ -46,7 +46,7 @@ Widget.TagCloud.prototype = (function(){return {
                 var s = document.createElement("span")
                 var level = Math.floor(Math.log(data[i].count) * factor)
                 s.setAttribute("class", "jsan-widget-tagcloud" + level)
-                a.style.fontSize = level + "pt"
+                a.style.fontSize = (6+level) + "pt"
                 a.style.textDecoration = "none"
                 levels.push(level)
                 s.appendChild(a)
