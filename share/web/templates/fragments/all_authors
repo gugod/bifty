@@ -9,6 +9,7 @@ tc.show({parentNode: document.getElementById("bifty-all-authors") })
 
 <%init>
 use JSON::Syck;
+$JSON::Syck::ImplicitUnicode = 1;
 my $authors = {};
 my $it = Bifty::Model::PostCollection->new();
 $it->unlimit();

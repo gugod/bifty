@@ -24,6 +24,10 @@ Widget.TagCloud.prototype = (function(){return {
         this._data = new Array();
     },
     create: function() {
+        var d = this._data.sort(function(a, b) {return a.count - b.count})
+        var max = d[data.length-1].count
+        var factor = 36/Math.log(max)
+
         this.data(this._data.sort(function(a, b) {
             var ta = a.tag.toLowerCase()
             var tb = b.tag.toLowerCase()
@@ -37,7 +41,8 @@ Widget.TagCloud.prototype = (function(){return {
                 a.setAttribute("href", data[i].url)
                 a.appendChild(document.createTextNode(data[i].tag))
                 var s = document.createElement("span")
-                s.setAttribute("class", "jsan-widget-tagcloud" + i)
+                var level = Math.floor(Math.log(data[i].count) * factor);
+                s.setAttribute("class", "jsan-widget-tagcloud" + level)
                 s.appendChild(a)
                 d.appendChild(s)
                 d.appendChild(document.createTextNode(" "))

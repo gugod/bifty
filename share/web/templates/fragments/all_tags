@@ -9,6 +9,7 @@ tc.show({parentNode: document.getElementById("bifty-all-tags") })
 
 <%init>
 use JSON::Syck;
+$JSON::Syck::ImplicitUnicode = 1;
 my $tags = {};
 my $posts = Bifty::Model::PostCollection->new();
 $posts->unlimit();
