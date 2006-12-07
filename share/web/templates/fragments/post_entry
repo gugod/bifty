@@ -1,10 +1,12 @@
 <div class="entry">
 
     <div class="entry-meta">
+      <dl>
       <dt>Subject</dt><dd><span class="entry-title"><% $post->title %></span></dd>
       <dt>By</dt><dd><% $post->author->username %></dd>
       <dt>Tags</dt><dd><% $post->tags || '' %></dd>
       <dt>Date</dt><dd><% $post->created_on %></dd>
+      </dl>
     </div>
 
     <div class="entry-body">
