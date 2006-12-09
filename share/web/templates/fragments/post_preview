@@ -1,0 +1,11 @@
+<% JSON::Syck::Dump({ preview => markdown( $emoticon->filter($text) ) }) |n%>
+<%args>
+$text => undef
+</%args>
+<%init>
+use JSON::Syck;
+$JSON::Syck::ImplicitUnicode=1;
+use Text::Emoticon::MSN;
+use Text::Markdown 'markdown';
+my $emoticon = Text::Emoticon::MSN->new();
+</%init>

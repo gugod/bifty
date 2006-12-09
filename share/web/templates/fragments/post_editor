@@ -2,8 +2,16 @@
 <% $action->form_field('title') %>
 <% $action->form_field('tags') %>
 <% $action->form_field('body') %>
+
 <% Jifty->web->form->submit( label => _('Save') ) %>
+
+
 <% Jifty->web->form->end() %>
+
+<div class="submit_button">
+<% Jifty->web->link( label => _('Preview'), as_button => 1, onclick => q{Bifty.Post.preview(this);return false;} ) %>
+</div>
+
 <%args>
 $action
 </%args>
