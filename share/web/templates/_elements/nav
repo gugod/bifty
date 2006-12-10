@@ -1,19 +1,19 @@
 <%init>
 my $top = Jifty->web->navigation;
 
-$top->child(View => url => "/view");
+$top->child( _('View') => url => "/view");
 
 if (Jifty->web->current_user->username) {
-    $top->child(Post => url => "/post");
+    $top->child( _('Post') => url => "/post");
 }
 
 # $top->child(Tags => url => "/tags");
 # $top->child(Authors => url => "/authors");
 
-$top->child(Search => url => "/search" );
+$top->child( _('Search') => url => "/search" );
 
 if (Jifty->web->current_user->id and Jifty->web->current_user->user_object) {
-$top->child(Logout => url => "/logout");
+    $top->child( Jifty->web->current_user->user_object->username  => url => "/user");
 }
 
 if (Jifty->config->framework('AdminMode') ) {

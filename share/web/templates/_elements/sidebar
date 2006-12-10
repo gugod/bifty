@@ -2,7 +2,7 @@
     
 <div id="salutation">
 <%_(q{You're not currently signed in.})%>
-<% Jifty->web->tangent( label => 'Sign in', url => '/login' ) %>.  
+<% Jifty->web->tangent( label => _('Sign in'), url => '/login' ) %>.  
 </div>
 % }
 

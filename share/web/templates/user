@@ -1,0 +1,14 @@
+<&|/_elements/wrapper, title => $user_object->username . q{'s setting} &>
+<div class="yui-g">
+
+  <h3 ><% $user_object->username %></h3>
+
+  <p><% _(q{Here's your account profile screen. You could change your settings here.}) %></p>
+
+  <% Jifty->web->link( label => _('Logout'), url => "/logout" ) %>
+
+</div>
+</&>
+<%init>
+my $user_object = Jifty->web->current_user->user_object;
+</%init>
