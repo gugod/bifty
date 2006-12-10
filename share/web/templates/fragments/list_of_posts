@@ -1,4 +1,12 @@
 <table class="bifty-list">
+<tr colspan="3">
+<div>
+Sort by:
+<% Jifty->web->link( label => _("Title"),  onclick => { args => { order => 'title'      } } ) %>
+<% Jifty->web->link( label => _("Date"),   onclick => { args => { order => 'created_on' } } ) %>
+<% Jifty->web->link( label => _("Author"), onclick => { args => { order => 'author'      } } ) %>
+</div>
+</tr>
 % while (my $post = $posts->next) {
 <tr style="cursor:pointer;"
     onmouseover="this.style.background='#ffc'"
@@ -8,12 +16,19 @@
     <% Jifty->web->link( label => $post->title, url => "/posts/" . $post->id ) %>
     <span class="tags" style="padding-left:11px;font-size:9pt;color:#090;"><% $post->tags ||'' %></span></td>
 <td><% defined $author ? '' : $post->author->username %></td>
-<td><% _('%1 comments', $post->comments->count ) %></td>
+<td>
+% if ($post->comments->count == 0) {
+<% _("No comments") %>
+% } else {
+<% _("%quant(%1,comment)", $post->comments->count ) %>
+%}
+</td>
 </tr>
 % }
 </table>
 
 <div class="bifty-pager">
+<br />
 % if ($posts->pager->last_page > 1) {
 %   if ($posts->pager->previous_page) {
       <% Jifty->web->link( label => "« Later Posts", onclick => { args => { page => $posts->pager->previous_page } } ) %>
@@ -25,7 +40,6 @@
 % }
 </div>
 
-
 <%init>
 use Text::Markdown qw/markdown/;
 use Text::Emoticon::MSN;
@@ -33,22 +47,33 @@ my $emoticon = Text::Emoticon::MSN->new();
 
 my $posts = Bifty::Model::PostCollection->new();
 
+my $post_alias;
 if (defined $author) {
     my $a = Bifty::Model::User->new();
     $a->load_by_cols( name => $author );
-    $posts->limit( column => 'author', value => $a->id );
+    $post_alias = $posts->limit( column => 'author', value => $a->id );
 }
 elsif ( defined $tag ) {
-    $posts->limit( column => 'tags', value => "\%$tag\%",
-                   case_sensitive => 0,
-                   operator => 'LIKE' );
+    $post_alias = $posts->limit( column => 'tags', value => "\%$tag\%",
+                                 case_sensitive => 0,
+                                 operator => 'LIKE' );
 }
 else {
     $posts->unlimit();
 }
 
 $posts->set_page_info(current_page => $page, per_page => 25);
-$posts->order_by( column => 'created_on', order => 'DES' );
+
+if (defined $order) {
+    if ($order eq 'comments') {
+    }
+    else {
+        $posts->order_by( column => $order , order => 'DES' );
+    }
+}
+else {
+    $posts->order_by( column => 'created_on', order => 'DES' );
+}
 
 $m->out("No items found.") if ($posts->pager->total_entries == 0);
 
@@ -57,4 +82,5 @@ $m->out("No items found.") if ($posts->pager->total_entries == 0);
 $page   => 1
 $author => undef
 $tag    => undef
+$order  => undef
 </%args>
