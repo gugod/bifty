@@ -1,13 +1,13 @@
 <table class="bifty-list">
-<tr colspan="3">
-<div>
-Sort by:
-<% Jifty->web->link( label => _("Title"),  onclick => { args => { order => 'title'      } } ) %>
-<% Jifty->web->link( label => _("Date"),   onclick => { args => { order => 'created_on' } } ) %>
-<% Jifty->web->link( label => _("Author"), onclick => { args => { order => 'author'      } } ) %>
-<% Jifty->web->link( label => _("Comments"), onclick => { args => { order => 'comments'      } } ) %>
-</div>
-</tr>
+  <tr><td colspan="3">
+    <div>
+      <% _("Sort by:") %>
+      <% Jifty->web->link( label => _("Date"),   onclick => { args => { order => 'created_on' } } ) %>
+    <% Jifty->web->link( label => _("Title"),  onclick => { args => { order => 'title'      } } ) %>
+    <% Jifty->web->link( label => _("Author"), onclick => { args => { order => 'author'      } } ) %>
+    <% Jifty->web->link( label => _("Comments"), onclick => { args => { order => 'comments'      } } ) %>
+    </div>
+  </td></tr>
 % while (my $post = $posts->next) {
 <tr style="cursor:pointer;"
     onmouseover="this.style.background='#ffc'"
