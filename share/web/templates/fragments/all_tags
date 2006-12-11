@@ -14,7 +14,7 @@ my $tags = {};
 my $posts = Bifty::Model::PostCollection->new();
 $posts->unlimit();
 while ( my $post = $posts->next ) {
-    for( split( /\s+/, $post->tags() ) ) {
+    for( split( /\s+/, $post->tags()||'' ) ) {
         $tags->{$_}++;
     }
 }
