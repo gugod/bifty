@@ -5,6 +5,7 @@ Sort by:
 <% Jifty->web->link( label => _("Title"),  onclick => { args => { order => 'title'      } } ) %>
 <% Jifty->web->link( label => _("Date"),   onclick => { args => { order => 'created_on' } } ) %>
 <% Jifty->web->link( label => _("Author"), onclick => { args => { order => 'author'      } } ) %>
+<% Jifty->web->link( label => _("Comments"), onclick => { args => { order => 'comments'      } } ) %>
 </div>
 </tr>
 % while (my $post = $posts->next) {
@@ -21,7 +22,7 @@ Sort by:
 <% _("No comments") %>
 % } else {
 <% _("%quant(%1,comment)", $post->comments->count ) %>
-%}
+% }
 </td>
 </tr>
 % }
@@ -47,14 +48,13 @@ my $emoticon = Text::Emoticon::MSN->new();
 
 my $posts = Bifty::Model::PostCollection->new();
 
-my $post_alias;
 if (defined $author) {
     my $a = Bifty::Model::User->new();
     $a->load_by_cols( name => $author );
-    $post_alias = $posts->limit( column => 'author', value => $a->id );
+    $posts->limit( column => 'author', value => $a->id );
 }
 elsif ( defined $tag ) {
-    $post_alias = $posts->limit( column => 'tags', value => "\%$tag\%",
+    $posts->limit( column => 'tags', value => "\%$tag\%",
                                  case_sensitive => 0,
                                  operator => 'LIKE' );
 }
@@ -66,6 +66,28 @@ $posts->set_page_info(current_page => $page, per_page => 25);
 
 if (defined $order) {
     if ($order eq 'comments') {
+        # Left JOIN is pretty different, read J:D::Collection pod
+        my $comments = $posts->join(
+            type => 'left',
+            column1 => "id",
+            table2  => 'comments',
+            column2 => 'post'
+        );
+
+        my %col = (
+            id     => $posts->column( column => "id" ),
+            count  => $posts->column(
+                alias    => $comments,
+                function => "COUNT",
+                column   => "id"
+            )
+        );
+
+        $posts->group_by(column => "id");
+        $posts->order_by(
+            order => 'DES',
+            function  => $col{count}
+        );
     }
     else {
         $posts->order_by( column => $order , order => 'DES' );
