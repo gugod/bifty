@@ -3,7 +3,7 @@ my $top = Jifty->web->navigation;
 
 $top->child( _('View') => url => "/view");
 
-if (Jifty->web->current_user->username) {
+if (Jifty->web->current_user->id) {
     $top->child( _('Post') => url => "/post");
 }
 
