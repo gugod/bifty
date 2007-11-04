@@ -52,7 +52,7 @@ sub current_user_can {
     my $self  = shift;
     my $right = shift;
     return 1 if $right eq 'read';
-    if ( $self->current_user->username ) {
+    if ( $self->current_user->id ) {
         if ( $right eq 'create' ) {
             return 1;
         }
