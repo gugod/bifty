@@ -2,6 +2,7 @@
 framework: 
   SiteConfig: etc/site_config.yaml
   AdminMode: 0
+  ConfigFileVersion: 3
   ApplicationClass: Bifty
   ApplicationName: Bifty
   Database: 
@@ -20,8 +21,14 @@ framework:
   MailerArgs: []
 
   Plugins:
+    - SkeletonApp: {}
+    - REST: {}
+    - ErrorTemplates: {}
+    - OnlineDocs: {}
+    - AdminUI: {}
     - REST: {}
 
+  TemplateClass: Opcafe::View
   Web: 
     BaseURL: http://localhost
     DataDir: var/mason
@@ -36,3 +43,4 @@ framework:
     ServeStaticFiles: 1
     StaticRoot: share/web/static
     TemplateRoot: share/web/templates
+
