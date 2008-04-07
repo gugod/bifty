@@ -2,7 +2,7 @@
 framework: 
   SiteConfig: etc/site_config.yaml
   AdminMode: 0
-  ConfigFileVersion: 3
+  ConfigFileVersion: 4
   ApplicationClass: Bifty
   ApplicationName: Bifty
   Database: 
