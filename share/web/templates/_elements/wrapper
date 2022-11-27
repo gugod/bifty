@@ -32,7 +32,7 @@
     </div><!-- /ft -->
   </div><!-- /doc -->
 
-% Jifty::Mason::Halo->render_component_tree() if (Jifty->config->framework('DevelMode') );
+% Jifty::Plugin::Halo->render_component_tree() if (Jifty->config->framework('DevelMode') );
 </body>
 </html>
 % Jifty->handler->stash->{'in_body'} = 0;

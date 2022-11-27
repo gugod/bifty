@@ -27,6 +27,7 @@ framework:
     - OnlineDocs: {}
     - AdminUI: {}
     - REST: {}
+    - Halo: {}
 
   TemplateClass: Opcafe::View
   Web: 
