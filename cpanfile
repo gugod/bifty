@@ -1,3 +1,4 @@
+requires 'Hash::Merge'         => '<=0.200';
 requires 'Jifty'               => '0.60722';
 requires 'Jifty::DBI'          => '0.25';
 requires 'Text::Markdown'      => 0;
